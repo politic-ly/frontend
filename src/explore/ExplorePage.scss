@@ -1,0 +1,14 @@
+.wrapper{
+    margin: 10px;
+    height: 80vh;
+    .explore-wrapper{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 1em;
+        height: 100%;
+        div{
+            background-color: gainsboro;
+        }
+    }
+}
+
