@@ -1,49 +1,46 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import defaultProfImg from '../images/default-prof-image.jpeg';
+import Logo from '../assets/politicly-logo';
+import blurbycat from '../assets/blurby-cat.jpg';
 
-// import '../../sass/app.scss';
-import './navigation.scss'
+import '../App.scss';
 
-const Navigation = ( email, imageURL ) => {
-
-    const [profileModalOpen, setProfileModalOpen] = useState(false);
+const Navigation = ( ) => {
 
     return (
         <div className='navigation'>
-            <div className='navigation--col'>
-                <NavLink to='/'>
-                    <img src='./amb-logo.png' alt='Logo' className='navigation--homeIcon'/>
-                </NavLink>
-                <ul className='navigation--items'>
-                    <li> 
-                        <NavLink to='/' className={e => (e.isActive ? 'navigation--item active' : 'navigation--item')}>Home</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to='explore' className={e => (e.isActive ? 'navigation--item active' : 'navigation--item')}>Explore</NavLink>
-                    </li>
-                    
-                </ul>
+            <div className='navigation logo-container'>
+                <Logo />
             </div>
-            {/* <span className='navigation--profile-col'>
-                <div className='navigation--profile-image-container' onClick={() => setProfileModalOpen(!profileModalOpen)}>
-                    <img src={defaultProfImg} alt='{email}' className='navigation--profile-image'/>
-                </div>
-                {profileModalOpen ? 
-                    <div className="navigation--profile-modal">
-                        <NavLink 
-                            to='/account' 
-                            className={e => (e.isActive ? 'navigation--profile-modal-item active' : 'navigation--profile-modal-item')} 
-                            style={{ transform: 'translateY(-1px)' }}
-                        >
-                            Account
-                        </NavLink>
-                        <div className="navigation--profile-modal-item" style={{ transform: 'translateY(-1px)' }}>
-                            Logout
-                        </div>   
-                    </div>
-                : <></>}
-            </span> */}
+            <h1 className='navigation politicly-brand'>Politic.ly</h1>
+            <ul className='navigation nav-items'>
+                <li>
+                    <NavLink to='/favorites' className={e => (e.isActive ? 'navigation--item active' : 'navigation--item')}>
+                        <span class="material-symbols-outlined">
+                            favorite
+                        </span>
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to='/explore' className={e => (e.isActive ? 'navigation--item active' : 'navigation--item')}>
+                        <span class="material-symbols-outlined">
+                            search
+                        </span>
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to='/news' className={e => (e.isActive ? 'navigation--item active' : 'navigation--item')}>
+                    <span class="material-symbols-outlined">
+                        newspaper
+                    </span>
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to='/account' className={e => (e.isActive ? 'navigation--item active' : 'navigation--item')}>
+                        <img className='navigation account-img' src={blurbycat} alt='account-image'/>
+                    </NavLink>
+                </li>
+            </ul>
         </div>
     );
 }

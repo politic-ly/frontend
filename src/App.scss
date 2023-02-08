@@ -1,4 +1,7 @@
-@import 'utilities/_variables.scss';
+@import './styles/utilities/_variables.scss';
+@import './styles/components/Navigation.scss';
+@import './styles/pages/HomePage.scss';
+@import './styles/pages/ExplorePage.scss';
 
 body {
     background-color: $background;

@@ -1,4 +1,4 @@
-import './Home.scss';
+import '../App.scss';
 import ExploreBlock from './Blocks/Explore-Block';
 import InitiativesBlock from './Blocks/Initiatives-Block';
 import NewsBlock from './Blocks/News-Block';

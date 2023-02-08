@@ -1,5 +1,5 @@
 import ExploreBlock from '../home/Blocks/Explore-Block';
-import './ExplorePage.scss';
+import '../App.scss';
 
 function Explore() {
   const explore = 6;
