@@ -24,6 +24,7 @@ const App = () => {
                       }
                   })
                   .then((res) => {
+                    localStorage.setItem('user', JSON.stringify(res.data));
                       setProfile(res.data);
                   })
                   .catch((err) => console.log(err));
@@ -33,13 +34,14 @@ const App = () => {
   );
   const logOut = () => {
     googleLogout();
+    localStorage.removeItem('user');
     setProfile(null);
 };
 
   return (
 
   <div>
-            {profile ? (
+            {(profile || localStorage.getItem('user')) ? (
                 <>
                 <Navigation></Navigation>
                 <button onClick={logOut}>Log out</button>
