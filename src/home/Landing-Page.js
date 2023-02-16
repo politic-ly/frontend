@@ -1,6 +1,4 @@
-import { useGoogleLogin, googleLogout } from '@react-oauth/google';
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 
 const LandingPage = ({login}) => {

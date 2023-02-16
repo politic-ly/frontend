@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Logo from '../assets/politicly-logo';
 import blurbycat from '../assets/blurby-cat.jpg';
@@ -37,7 +37,7 @@ const Navigation = ( ) => {
                 </li>
                 <li>
                     <NavLink to='/account' className={e => (e.isActive ? 'navigation--item active' : 'navigation--item')}>
-                        <img className='navigation account-img' src={blurbycat} alt='account-image'/>
+                        <img className='navigation account-img' src={blurbycat} alt="cat-account"/>
                     </NavLink>
                 </li>
             </ul>
