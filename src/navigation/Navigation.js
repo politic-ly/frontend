@@ -16,21 +16,21 @@ const Navigation = ( ) => {
             <ul className='navigation nav-items'>
                 <li>
                     <NavLink to='/favorites' className={e => (e.isActive ? 'navigation--item active' : 'navigation--item')}>
-                        <span class="material-symbols-outlined">
+                        <span className="material-symbols-outlined">
                             favorite
                         </span>
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to='/explore' className={e => (e.isActive ? 'navigation--item active' : 'navigation--item')}>
-                        <span class="material-symbols-outlined">
+                        <span className="material-symbols-outlined">
                             search
                         </span>
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to='/news' className={e => (e.isActive ? 'navigation--item active' : 'navigation--item')}>
-                    <span class="material-symbols-outlined">
+                    <span className="material-symbols-outlined">
                         newspaper
                     </span>
                     </NavLink>
