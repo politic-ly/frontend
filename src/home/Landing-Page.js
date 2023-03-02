@@ -9,12 +9,11 @@ const LandingPage = ({login}) => {
     // });
 
     return (
-        <>
-        <h2>React Google Login</h2>
+        <div style={{backgroundColor: '#F5F5F5', display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', minHeight: '100vh'}}>
         <br/>
         <br/>
-        <button onClick={() => login()}>Sign in with Google 🚀 </button>
-        </>
+        <div style={{backgroundColor:'white', height:'50px', width:'200px'}} onClick={() => login()}>Login as Citizen</div>
+        </div>
     )
 }
 
