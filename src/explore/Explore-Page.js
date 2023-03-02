@@ -1,7 +1,33 @@
 import ExploreBlock from '../home/Blocks/Explore-Block';
+import { useEffect, useState } from 'react';
 import '../App.scss';
 
 function Explore() {
+  const [data,setData]=useState([]);
+  const getData=()=>{
+    fetch('campaign.json'
+    ,{
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+    }
+    )
+      .then(function(response){
+        console.log(response)
+        return response.json();
+      })
+      .then(function(myJson) {
+        console.log(myJson)
+        setData(myJson)
+      });
+  }
+  useEffect(()=>{
+    getData();
+
+  },[])
+
+
   const explore = 6;
     return (
       <div className="page-wrapper">
