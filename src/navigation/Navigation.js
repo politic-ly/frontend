@@ -9,9 +9,11 @@ const Navigation = ( ) => {
 
     return (
         <div className='navigation'>
-            <div className='navigation logo-container'>
-                <Logo />
-            </div>
+            <NavLink to='/'>
+                <div className='navigation logo-container'>
+                    <Logo />
+                </div>
+            </NavLink>
             <h1 className='navigation politicly-brand'>Politic.ly</h1>
             <ul className='navigation nav-items'>
                 <li>

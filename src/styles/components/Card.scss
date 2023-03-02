@@ -1,0 +1,57 @@
+.initiativeCard {
+    width: 45vw;
+    height: 110px;
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &--text {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &--volunteer {
+        border-radius: 30px;
+        width: 32px;
+    }
+
+    &--function {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+
+    &--location, &--volunteers {
+        font-size: 14px;
+        color: white;
+    }
+
+    &--title {
+        h2 { 
+            font-size: 18px;
+            margin: 8px 0; 
+        }
+        p { 
+            font-size: 12px;
+            margin: 8px 0; 
+        }
+        h2 span, p span {
+            background-color: white;
+            padding: 2px 4px;
+        }
+    }
+}
+
+.material-symbols-outlined {
+    .favorite {
+        &:hover {
+            fill: 1;
+        }
+    }
+}

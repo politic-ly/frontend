@@ -1,0 +1,69 @@
+{
+ "users": [{
+    "id": 1,
+    "email": "gadajm@mail.uc.edu",
+    "name": "Jash Gada",
+    "username": "spicyjash93",
+    "picture": "jash.PNG",
+    "location": "Cincinnati, OH",
+    "favorites": [1,2,3],
+    "created": [1],
+    "events": [4,5]
+ },
+ {
+    "id": 2,
+    "email": "tremblea@mail.uc.edu",
+    "name": "Liz Tremblay",
+    "username": "might_wagon",
+    "picture": "liz.PNG",
+    "location": "Cincinnati, OH",
+    "favorites": [3,4],
+    "created": [5],
+    "events": [1,2,3]
+ },
+ {
+    "id": 3,
+    "email": "mills2aj@mail.uc.edu",
+    "name": "Alex Mills",
+    "username": "chornWhisperer",
+    "picture": "alex.PNG",
+    "location": "Cincinnati, OH",
+    "favorites": [2,4,5],
+    "created": [1],
+    "events": [1,3,5]
+ }],
+ "initiatives": [{
+    "id": 1,
+    "title": "Rescue the Chorns!",
+    "summary": "Save bunnies from breeding farm in Mason",
+    "description": "Save bunnies from breeding farm in Mason",
+    "creator": 3,
+    "collaborators": [1,2],
+    "images": [],
+    "location": "Warren County",
+    "events": [1,3,5]
+ },
+ {
+    "id": 2,
+    "title": "Rehome Memows in Volcano",
+    "summary": "The best place for Memows is an erruption.",
+    "description": "The best place for Memows is an erruption.",
+    "creator": 2,
+    "collaborators": [],
+    "images": [],
+    "location": "Hamilton Couty",
+    "events": [1,3,5]
+ },
+ {
+    "id": 3,
+    "title": "Fire racist Prof. Dawson!",
+    "summary": "Remove Dawson from UC after using racial slurs on student.",
+    "description": "Remove Dawson from UC after using racial slurs on student.",
+    "creator": 1,
+    "collaborators": [3],
+    "images": [],
+    "location": "Hamilton Couty",
+    "events": [7]
+ }
+]
+}

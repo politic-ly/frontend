@@ -1,10 +1,47 @@
 @import './styles/utilities/_variables.scss';
+@import './styles/components/Card.scss';
 @import './styles/components/Navigation.scss';
 @import './styles/pages/HomePage.scss';
 @import './styles/pages/ExplorePage.scss';
+@import './styles/pages/FavoritesPage.scss';
 
 body {
     background-color: $background;
     font-family: 'Open Sans';
     color: $text-standard;
 }
+
+h1,h2,h3,h4,p {
+    margin: 0;
+}
+
+.page-subtitle {
+    padding: 4px 0px 12px 0px;
+}
+
+.page-wrapper {
+    margin: 10px;
+    padding: 12px;
+}
+
+.material-symbols-outlined {
+    &:hover {
+        color: $brand-01;
+    }
+
+    font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48
+}
+
+.material-symbols-outlined {
+    .unfill {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48
+    }
+  }

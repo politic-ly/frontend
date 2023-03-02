@@ -1,9 +1,9 @@
-import '../App.scss';
+import React from 'react';
 import ExploreBlock from './Blocks/Explore-Block';
 import InitiativesBlock from './Blocks/Initiatives-Block';
 import NewsBlock from './Blocks/News-Block';
 
-function Home() {
+const Home = () => {
   const explores = 4;
   const initiatives = 6;
   const news = 6;
