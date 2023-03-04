@@ -2,6 +2,7 @@ import React from 'react';
 import ExploreBlock from './Blocks/Explore-Block';
 import InitiativesBlock from './Blocks/Initiatives-Block';
 import NewsBlock from './Blocks/News-Block';
+import { Card } from '@mui/material';
 
 const Home = () => {
   const explores = 4;
@@ -14,9 +15,9 @@ const Home = () => {
             <b>Explore What is Going On in Your Community</b>
             <div className='explore-wrapper'>
             {[...Array(explores)].map((e, i) => (
-              <div key={i}>
+              <Card key={i}>
                   <ExploreBlock/>
-              </div>
+              </Card>
             ))}
             </div>
 
@@ -25,9 +26,9 @@ const Home = () => {
             <b>Updates on Initiatives You Follow</b>
             <div className='initiatives-wrapper'>
             {[...Array(initiatives)].map((e, i) => (
-              <div key={i}>
+              <Card key={i}>
                   <InitiativesBlock/>
-              </div>
+              </Card>
             ))}
             </div>
 
@@ -38,9 +39,9 @@ const Home = () => {
         <b>News</b>
           <div className='news-wrapper'>
                 {[...Array(news)].map((e, i) => (
-                  <div key={i}>
+                  <Card key={i}>
                       <NewsBlock/>
-                  </div>
+                  </Card>
                 ))}
           </div>
         </div>
