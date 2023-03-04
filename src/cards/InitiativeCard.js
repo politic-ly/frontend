@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Cat from "../assets/blurby-cat.jpg";
+import { Card } from '@mui/material';
 
 const InitiativeCard = ({ img, title, subtitle, location, volunteerData }) => {
   // State objects for data
@@ -20,7 +21,7 @@ const InitiativeCard = ({ img, title, subtitle, location, volunteerData }) => {
   }, []);
 
   return (
-    <div
+    <Card
       className="initiativeCard"
       style={{
         background: `linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${img})`,
@@ -65,7 +66,7 @@ const InitiativeCard = ({ img, title, subtitle, location, volunteerData }) => {
           </div>
         </div>
       </div>
-    </div>
+    </Card>
   );
 };
 
