@@ -1,0 +1,43 @@
+.createInitiative {
+
+    &--formContainer {
+        padding: 8px 64px;
+        min-height: 225px;
+    }
+
+    &--banner {
+        width: 100vw;
+        position: relative;
+        padding: 12px;
+        margin-bottom: 24px;
+        left: 0;
+        right: 0;
+        background: $brand-03;
+    }
+
+    &--textInput {
+        margin-bottom: 12px !important;
+    }
+
+    &--requiredInfo {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &--stepButtons {
+        text-align: center;
+    }
+}
+
+.css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active,
+.css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed {
+// .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root.Mui-focused,
+// .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+    color: $brand-01 !important;
+}
+
+// .css-v4u5dn-MuiInputBase-root-MuiInput-root:after,
+// .css-1rb63tl-MuiInputBase-root-MuiInput-root:after,
+// .css-9ddj71-MuiInputBase-root-MuiInput-root:after {
+//     border-bottom: 2px solid $brand-01 !important;
+// }

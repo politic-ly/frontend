@@ -1,8 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 import InitiativeCard from "../cards/InitiativeCard";
 import pic from "../assets/blurby-cat.jpg";
 
 function Favorites() {
+  const [data,setData]=useState([]);
+  const getData=()=>{
+    fetch('initiatives.json'
+    ,{
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+    }
+    )
+      .then(function(response){
+        console.log(response)
+        return response.json();
+      })
+      .then(function(myJson) {
+        console.log(myJson)
+        setData(myJson)
+      });
+  }
+  useEffect(()=>{
+    getData();
+
+  },[])
+
+
   return (
     <div className="page-wrapper">
       <span>
@@ -14,20 +39,18 @@ function Favorites() {
         </p>
       </span>
       <div className="favorites-wrapper">
-        <InitiativeCard
-          img={pic}
-          title="Memow has no hands!"
-          subtitle="Memows lose their hands at alarming rate in Viet Nam"
-          location="Randall County"
-          volunteerData={[1,2,3]}
-        />
-        <InitiativeCard
-          img={pic}
-          title="Get Jashua pegged!"
-          subtitle="Local omega man Jashua needs his butt invaded by a wagon"
-          location="Jammies County"
-          volunteerData={[1,2,3]}
-        />
+        {data.map((initiative, i) => (
+          <div key={i}>
+              <InitiativeCard
+                // img={`../assets/${initiative.images[0]}`}
+                img={pic}
+                title={initiative.title}
+                subtitle={initiative.summary}
+                location={initiative.location}
+                volunteerData={initiative.followers}
+              />
+          </div>
+        ))}
       </div>
     </div>
   );

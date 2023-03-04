@@ -1,6 +1,6 @@
 import InitiativeCard from '../cards/InitiativeCard';
 import pic from '../assets/gimpy.PNG';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../App.scss';
 
 function Explore() {
@@ -40,7 +40,7 @@ function Explore() {
                     // img={`../assets/${initiative.images[0]}`}
                     img={pic}
                     title={initiative.title}
-                    subtitle={initiative.summary}
+                    subtitle={initiative.shortDescription}
                     location={initiative.location}
                     volunteerData={initiative.followers}
                   />

@@ -1,8 +1,8 @@
 [{
     "id": 1,
     "title": "Rescue the Chorns!",
-    "summary": "Save bunnies from breeding farm in Mason",
-    "description": "Save bunnies from breeding farm in Mason",
+    "shortDescription": "Save bunnies from breeding farm in Mason",
+    "fullDescription": "Save bunnies from breeding farm in Mason",
     "creator": 3,
     "collaborators": [1,2],
     "images": ["gimpy.PNG"],
@@ -13,8 +13,8 @@
  {
     "id": 2,
     "title": "Rehome Memows in Volcano",
-    "summary": "The best place for Memows is an erruption.",
-    "description": "The best place for Memows is an erruption.",
+    "shortDescription": "The best place for Memows is an erruption.",
+    "fullDescription": "The best place for Memows is an erruption.",
     "creator": 2,
     "collaborators": [],
     "images": ["Meg_Wagon_MET.PNG"],
@@ -25,13 +25,13 @@
  {
     "id": 3,
     "title": "Fire racist Prof. Dawson!",
-    "summary": "Remove Dawson from UC after using racial slurs on student.",
-    "description": "Remove Dawson from UC after using racial slurs on student.",
+    "shortDescription": "Remove Dawson from UC after using racial slurs on student.",
+    "fullDescription": "Remove Dawson from UC after using racial slurs on student.",
     "creator": 1,
     "collaborators": [3],
     "images": ["RevUC_Team_Pic.png"],
     "location": "Hamilton Couty",
     "events": [7],
-    "followers": [1,2,3]
+    "followers": [1,3]
  }
 ]

@@ -25,26 +25,12 @@ root.render(
               <Route path="/account" element={<Account/>}/>
               <Route path="/news" element={<News/>}/>
               <Route path="/favorites" element={<Favorites/>}/>
-              <Route path="/create/initiative" element={<CreateInitiative/>}/>
+              <Route path="/initiative" element={<CreateInitiative/>}/>
             </Route>
           </Routes>
         </BrowserRouter> 
       </React.StrictMode>
-    </GoogleOAuthProvider>,
-  // <React.StrictMode>
-  //    <BrowserRouter>
-  //   <Routes>
-  //       <Route path="/" element={<App />} >
-  //           <Route path="/" element={<Home/>}/>
-  //           <Route path="/explore" element={<Explore/>}/>
-  //           <Route path="/account" element={<Account/>}/>
-  //           <Route path="/news" element={<News/>}/>
-  //           <Route path="/favorites" element={<Favorites/>}/>
-  //       </Route>
-  //   </Routes>
-  // </BrowserRouter> 
-  // <App/>
-  // </React.StrictMode>
+    </GoogleOAuthProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

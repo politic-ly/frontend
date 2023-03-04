@@ -1,5 +1,4 @@
 .initiativeCard {
-    width: 45vw;
     height: 110px;
     padding: 8px;
     display: flex;
@@ -17,7 +16,7 @@
 
     &--volunteers {
         color: $background;
-        text-align: center;
+        text-align: right;
     }
 
     &--volunteerList {
@@ -31,6 +30,10 @@
 
     &--favorited {
         color: $background;
+
+        &:hover {
+            fill: $brand-02;
+        }
     }
 
     &--function {
@@ -42,7 +45,7 @@
 
     &--location, &--volunteers {
         font-size: 14px;
-        color: white;
+        color: $background;
     }
 
     &--title {
