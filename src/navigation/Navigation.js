@@ -1,7 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Logo from '../assets/politicly-logo';
+import Avatar from '@mui/material/Avatar';
 import blurbycat from '../assets/blurby-cat.jpg';
+import { Favorite, Search, Newspaper } from '@mui/icons-material';
+
 
 import '../App.scss';
 
@@ -18,28 +21,25 @@ const Navigation = ( ) => {
             <ul className='navigation nav-items'>
                 <li>
                     <NavLink to='/favorites' className={e => (e.isActive ? 'navigation--item active' : 'navigation--item')}>
-                        <span className="material-symbols-outlined">
-                            favorite
-                        </span>
+                        <Favorite />
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to='/explore' className={e => (e.isActive ? 'navigation--item active' : 'navigation--item')}>
-                        <span className="material-symbols-outlined">
-                            search
-                        </span>
+                        <Search />
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to='/news' className={e => (e.isActive ? 'navigation--item active' : 'navigation--item')}>
                     <span className="material-symbols-outlined">
-                        newspaper
+                        <Newspaper />
                     </span>
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to='/account' className={e => (e.isActive ? 'navigation--item active' : 'navigation--item')}>
-                        <img className='navigation account-img' src={blurbycat} alt="cat-account"/>
+                        {/* <img className='navigation account-img' src={blurbycat} alt="cat-account"/> */}
+                        <Avatar src={blurbycat} alt="cat-account"/>
                     </NavLink>
                 </li>
             </ul>

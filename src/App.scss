@@ -4,10 +4,11 @@
 @import './styles/pages/HomePage.scss';
 @import './styles/pages/ExplorePage.scss';
 @import './styles/pages/FavoritesPage.scss';
+@import './styles/pages/Create.scss';
 
 body {
     background-color: $background;
-    font-family: 'Open Sans';
+    font-family: 'Inter', sans-serif;
     color: $text-standard;
 }
 
@@ -23,25 +24,3 @@ h1,h2,h3,h4,p {
     margin: 10px;
     padding: 12px;
 }
-
-.material-symbols-outlined {
-    &:hover {
-        color: $brand-02;
-    }
-
-    font-variation-settings:
-    'FILL' 1,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 48
-}
-
-.material-symbols-outlined {
-    &.unfill {
-        font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 48
-    }
-  }

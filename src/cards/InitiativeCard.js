@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Cat from "../assets/blurby-cat.jpg";
+import AvatarGroup from "@mui/material/AvatarGroup";
+import Avatar from "@mui/material/Avatar";
+import { Favorite, FavoriteBorderOutlined } from "@mui/icons-material";
 
 const InitiativeCard = ({ img, title, subtitle, location, volunteerData }) => {
   // State objects for data
@@ -16,7 +19,7 @@ const InitiativeCard = ({ img, title, subtitle, location, volunteerData }) => {
     //   { id: 6, username: "wenchBenchYourMom", profileImg: Cat },
     //   { id: 7, username: "wenchBenchYourMom", profileImg: Cat },
     // ]);
-    setVolunteerList(volunteerData)
+    setVolunteerList(volunteerData);
   }, []);
 
   return (
@@ -38,30 +41,32 @@ const InitiativeCard = ({ img, title, subtitle, location, volunteerData }) => {
         </div>
       </div>
       <div className="initiativeCard--function">
-        <span
-          className={`material-symbols-outlined initiativeCard--favorited ${favorited ? "" : "unfill"}`}
-          onClick={() => setFavorited(!favorited)}
-        >
-          favorite
-        </span>
-        <div
-          className="initiativeCard--volunteers"
-          style={{
-            transform: `translate(${(volunteerList.length - 1) * 12}px, 24px)`,
-          }}
-        >
+        {favorited ? (
+          <Favorite 
+            className="initiativeCard--favorited"
+            onClick={() => setFavorited(!favorited)}
+          />
+        ) : (
+          <FavoriteBorderOutlined
+            className="initiativeCard--favorited"
+            onClick={() => setFavorited(!favorited)}
+          />
+        )}
+        <div className="initiativeCard--volunteers">
           <p>{volunteerList.length} volunteers</p>
           <div className="initiativeCard--volunteerList">
-            {volunteerList.map((vol, index) => {
-              return (
-                <img
-                  className="initiativeCard--volunteer"
-                  src={vol.profileImg}
-                  alt={vol.username}
-                  style={{ transform: `translateX(-${index * 12}px)` }}
-                />
-              );
-            })}
+            <AvatarGroup max={10}>
+              {volunteerList.map((vol, index) => {
+                return (
+                  <Avatar
+                    key={index}
+                    src={vol.profileImg}
+                    alt={vol.username}
+                    sx={{ width: 24, height: 24 }}
+                  />
+                );
+              })}
+            </AvatarGroup>
           </div>
         </div>
       </div>
