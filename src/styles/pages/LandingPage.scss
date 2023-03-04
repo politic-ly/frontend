@@ -1,3 +1,17 @@
+.logo {
+  padding: 12px;
+  display: flex;
+  align-items: center;
+
+  &.logo-container {
+    svg {
+      display: block;
+      width: 100px;
+      height: 120px;
+    }
+  }
+}
+
 .container {
   background-color: #f5f5f5;
   display: flex;
@@ -6,4 +20,41 @@
   align-items: center;
   text-align: center;
   min-height: 100vh;
+  font-family: "Roboto", sans-serif;
+  font-size: 36px;
+  font-weight: 900;
+}
+
+.login-title {
+  margin-bottom: 35px;
+}
+
+.button {
+  height: 50px;
+  width: 200px;
+  margin-bottom: 20px !important;
+
+  &.citizen {
+    background-color: #67b9a5;
+
+    &:hover {
+      background-color: #3f8d7a;
+    }
+  }
+
+  &.politican {
+    background-color: #a669df;
+
+    &:hover {
+      background-color: #6f4299;
+    }
+  }
+
+  &.admin {
+    background-color: #e0bc58;
+
+    &:hover {
+      background-color: #a88d41;
+    }
+  }
 }
