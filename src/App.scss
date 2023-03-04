@@ -26,7 +26,7 @@ h1,h2,h3,h4,p {
 
 .material-symbols-outlined {
     &:hover {
-        color: $brand-01;
+        color: $brand-02;
     }
 
     font-variation-settings:
@@ -37,7 +37,7 @@ h1,h2,h3,h4,p {
 }
 
 .material-symbols-outlined {
-    .unfill {
+    &.unfill {
         font-variation-settings:
         'FILL' 0,
         'wght' 400,

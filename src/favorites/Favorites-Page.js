@@ -19,14 +19,14 @@ function Favorites() {
           title="Memow has no hands!"
           subtitle="Memows lose their hands at alarming rate in Viet Nam"
           location="Randall County"
-          volunteers={3}
+          volunteerData={[1,2,3]}
         />
         <InitiativeCard
           img={pic}
           title="Get Jashua pegged!"
           subtitle="Local omega man Jashua needs his butt invaded by a wagon"
           location="Jammies County"
-          volunteers={8}
+          volunteerData={[1,2,3]}
         />
       </div>
     </div>

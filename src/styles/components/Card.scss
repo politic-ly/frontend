@@ -15,9 +15,22 @@
         justify-content: space-between;
     }
 
+    &--volunteers {
+        color: $background;
+        text-align: center;
+    }
+
+    &--volunteerList {
+        margin-top: 4px;
+    }
+
     &--volunteer {
         border-radius: 30px;
         width: 32px;
+    }
+
+    &--favorited {
+        color: $background;
     }
 
     &--function {
@@ -44,14 +57,6 @@
         h2 span, p span {
             background-color: white;
             padding: 2px 4px;
-        }
-    }
-}
-
-.material-symbols-outlined {
-    .favorite {
-        &:hover {
-            fill: 1;
         }
     }
 }

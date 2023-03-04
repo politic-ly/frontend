@@ -10,6 +10,7 @@ import Explore from './explore/Explore-Page';
 import Account from './account/Account';
 import News from './news/News-Page';
 import Favorites from './favorites/Favorites-Page';
+import CreateInitiative from './create/CreateInitiative';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -24,6 +25,7 @@ root.render(
               <Route path="/account" element={<Account/>}/>
               <Route path="/news" element={<News/>}/>
               <Route path="/favorites" element={<Favorites/>}/>
+              <Route path="/create/initiative" element={<CreateInitiative/>}/>
             </Route>
           </Routes>
         </BrowserRouter> 

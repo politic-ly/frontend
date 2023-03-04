@@ -1,11 +1,12 @@
-import ExploreBlock from '../home/Blocks/Explore-Block';
+import InitiativeCard from '../cards/InitiativeCard';
+import pic from '../assets/gimpy.PNG';
 import { useEffect, useState } from 'react';
 import '../App.scss';
 
 function Explore() {
   const [data,setData]=useState([]);
   const getData=()=>{
-    fetch('campaign.json'
+    fetch('initiatives.json'
     ,{
       headers : { 
         'Content-Type': 'application/json',
@@ -27,16 +28,22 @@ function Explore() {
 
   },[])
 
-
-  const explore = 6;
     return (
       <div className="page-wrapper">
         <h2>Take Action</h2>
         <p className='page-subtitle'><i>Initiatives based on your interests</i></p>
             <div className='explore-wrapper'>
-            {[...Array(explore)].map((e, i) => (
+            {data.map((initiative, i) => (
               <div key={i}>
-                  <ExploreBlock/>
+                  <InitiativeCard
+                    key={i}
+                    // img={`../assets/${initiative.images[0]}`}
+                    img={pic}
+                    title={initiative.title}
+                    subtitle={initiative.summary}
+                    location={initiative.location}
+                    volunteerData={initiative.followers}
+                  />
               </div>
             ))}
             </div>
