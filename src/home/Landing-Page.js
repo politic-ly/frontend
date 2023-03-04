@@ -1,5 +1,6 @@
 import React from 'react';
-
+import { Button } from '@mui/material';
+import Logo from '../assets/politicly-logo';
 
 const LandingPage = ({login}) => {
 
@@ -9,10 +10,14 @@ const LandingPage = ({login}) => {
     // });
 
     return (
-        <div style={{backgroundColor: '#F5F5F5', display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', minHeight: '100vh'}}>
+        <div className="container">
+        <div className='navigation logo-container'>
+            <Logo />
+        </div>
+        <div>Login</div>
         <br/>
         <br/>
-        <div style={{backgroundColor:'white', height:'50px', width:'200px'}} onClick={() => login()}>Login as Citizen</div>
+        <Button variant="contained" style={{backgroundColor: '#67B9A5', height:'50px', width:'200px'}} onClick={() => login()}>Citizen</Button>
         </div>
     )
 }
