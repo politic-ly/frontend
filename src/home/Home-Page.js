@@ -26,9 +26,9 @@ const Home = () => {
             <b>Updates on Initiatives You Follow</b>
             <div className='initiatives-wrapper'>
             {[...Array(initiatives)].map((e, i) => (
-              <div key={i}>
+              <Card key={i}>
                   <InitiativesBlock/>
-              </div>
+              </Card>
             ))}
             </div>
 
@@ -39,9 +39,9 @@ const Home = () => {
         <b>News</b>
           <div className='news-wrapper'>
                 {[...Array(news)].map((e, i) => (
-                  <div key={i}>
+                  <Card key={i}>
                       <NewsBlock/>
-                  </div>
+                  </Card>
                 ))}
           </div>
         </div>
