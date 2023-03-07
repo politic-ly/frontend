@@ -1,24 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import InitiativeCard from "../cards/InitiativeCard";
 import pic from "../assets/blurby-cat.jpg";
-
+import axios from 'axios';
 function Favorites() {
   const [data,setData]=useState([]);
   const getData=()=>{
-    fetch('initiatives.json'
-    ,{
-      headers : { 
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-       }
-    }
-    )
+    axios.get('http://localhost:5152/initiatives')
       .then(function(response){
-        console.log(response)
-        return response.json();
+        return response.data;
       })
       .then(function(myJson) {
-        console.log(myJson)
         setData(myJson)
       });
   }
