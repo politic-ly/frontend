@@ -9,15 +9,6 @@ const InitiativeCard = ({ img, title, subtitle, location, volunteerData }) => {
   const [favorited, setFavorited] = useState(false);
 
   useEffect(() => {
-    // setVolunteerList([
-    //   { id: 1, username: "BigBoiJash", profileImg: Cat },
-    //   { id: 2, username: "thickLizard", profileImg: Cat },
-    //   { id: 3, username: "wenchBenchYourMom", profileImg: Cat },
-    //   { id: 4, username: "wenchBenchYourMom", profileImg: Cat },
-    //   { id: 5, username: "wenchBenchYourMom", profileImg: Cat },
-    //   { id: 6, username: "wenchBenchYourMom", profileImg: Cat },
-    //   { id: 7, username: "wenchBenchYourMom", profileImg: Cat },
-    // ]);
     setVolunteerList(volunteerData);
   }, []);
 

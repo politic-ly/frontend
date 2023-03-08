@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useMemo, useRef } from "react";
 import {
   Button,
   Chip,
   FormControl,
   IconButton,
+  InputAdornment,
+  InputLabel,
+  OutlinedInput,
   Step,
   Stepper,
   StepLabel,
@@ -14,12 +17,19 @@ import { Add } from "@mui/icons-material";
 const CreateInitiative = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [tags, setTags] = useState([]);
+  const [tagValue, setTagValue] = useState("");
+  const tagRef = useRef();
   const steps = ["Required Information", "Additional Details", "Upload Media"];
 
-  const addTag = (addedTag) => {
+  const addTag = () => {
+    setTagValue(tagRef.current.value)
     let tempTags = tags;
-    tempTags.push(addedTag);
+    tempTags.push(tagValue);
     setTags(tempTags);
+    setTagValue("");
+    console.log(tags)
+    console.log(tagRef.current.value)
+    // resetInput()
   };
 
   const deleteTag = (deletedTag) => {
@@ -27,6 +37,11 @@ const CreateInitiative = () => {
     tempTags.push(deletedTag);
     setTags(tempTags);
   };
+
+  // const resetInput = () => {
+  //   tagRef.current.value = "";
+  //   setTagValue("")
+  // }
 
   const handleBackStep = () => {
     setActiveStep(activeStep - 1);
@@ -38,9 +53,20 @@ const CreateInitiative = () => {
 
   const RequiredInfo = () => {
     return (
-      <form className="createInitiative--requiredInfo page-wrapper">
-        <TextField className="createInitiative--textInput" label="Title" color="secondary"/>
-        <TextField className="createInitiative--textInput" label="Location" color="secondary"/>
+      <form
+        className="createInitiative--requiredInfo page-wrapper"
+        onSubmit={(e) => test(e)}
+      >
+        <TextField
+          className="createInitiative--textInput"
+          label="Title"
+          color="secondary"
+        />
+        <TextField
+          className="createInitiative--textInput"
+          label="Location"
+          color="secondary"
+        />
         <TextField
           className="createInitiative--textInput"
           label="Short Description"
@@ -60,13 +86,30 @@ const CreateInitiative = () => {
 
   const AdditionalDetails = () => {
     return (
+      //   <form className="page-wrapper" onSubmit={(e) => addTag(e)}>
       <form className="page-wrapper">
-        <div className="createInitiative--addTagsGroup">    
-            <TextField className="createInitiative--textInput" label="Tags" color="secondary"/>
-            <IconButton aria-label="add tag">
-                <Add/>
-            </IconButton>
+        <div className="createInitiative--addTagsGroup">
+          <TextField
+            id="addTaPgInput"
+            label="Tags"
+            variant="outlined"
+            color="secondary"
+            inputRef={tagRef}
+            // onChange={(e) => setTagValue(e.target.value)}
+          />
+          <IconButton
+            aria-label="add tag"
+            // disabled={tagValue == ""}
+            onClick={() => addTag()}
+          >
+            <Add />
+          </IconButton>
         </div>
+        {/* {tags.map((tag) => {
+          return (
+            tag
+          );
+        })} */}
       </form>
     );
   };
@@ -106,7 +149,7 @@ const CreateInitiative = () => {
           );
         })}
       </Stepper>
-      {renderFormContent(activeStep)}
+      {useMemo(() => renderFormContent(activeStep), [activeStep])}
       <div className="createInitiative--stepButtons">
         <Button
           color="inherit"
