@@ -19,14 +19,10 @@ const App = () => {
       () => {
           if (user) {
               axios
-                  .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
-                      headers: {
-                          Authorization: `Bearer ${user.access_token}`,
-                          Accept: 'application/json'
-                      }
-                  })
+                  .post('http://localhost:5152/users/' + user.access_token)
                   .then((res) => {
                       localStorage.setItem('user', JSON.stringify(res.data));
+                  
                       setProfile(res.data);
                   })
                   .catch((err) => console.log(err));

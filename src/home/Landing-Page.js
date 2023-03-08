@@ -11,13 +11,13 @@ const LandingPage = ({login}) => {
 
     return (
         <div className="container">
-        <div className='navigation logo-container'>
-            <Logo />
-        </div>
-        <div>Login</div>
-        <br/>
-        <br/>
-        <Button variant="contained" style={{backgroundColor: '#67B9A5', height:'50px', width:'200px'}} onClick={() => login()}>Citizen</Button>
+            <div className='logo logo-container'>
+                <Logo />
+            </div>
+            <div className="login-title">Login</div>
+            <Button variant="contained" className="button citizen" onClick={() => login()}>Citizen</Button>
+            <Button variant="contained" className="button politican" onClick={() => login()}>Politican</Button>
+            <Button variant="contained" className="button admin" onClick={() => login()}>Admin</Button>
         </div>
     )
 }

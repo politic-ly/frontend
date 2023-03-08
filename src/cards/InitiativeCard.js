@@ -8,6 +8,7 @@ const InitiativeCard = ({ img, title, subtitle, location, volunteerData }) => {
   const [volunteerList, setVolunteerList] = useState([]);
   const [favorited, setFavorited] = useState(false);
 
+  console.log(title);
   useEffect(() => {
     setVolunteerList(volunteerData);
   }, []);
