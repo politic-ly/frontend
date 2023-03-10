@@ -52,13 +52,13 @@ function Initiative() {
         </span>
       </div>
       <div className="right-col">
-        <div className="volunteers-container">
-          <h2>
+        <div className="volunteers-container test">
+          <h2 className="header-style">
             <b>Volunteers</b>
           </h2>
         </div>
-        <div className="announcements-container">
-          <h2>
+        <div className="announcements-container test">
+          <h2 className="header-style">
             <b>Recent Announcements</b>
           </h2>
           <Box sx={{ width: '100%' }}>
@@ -70,7 +70,7 @@ function Initiative() {
           </Box>
         </div>
         <div className="events-container">
-          <h2>
+          <h2 className="header-style">
             <b>Upcoming Events</b>
           </h2>
           <Box sx={{ width: '100%' }}>

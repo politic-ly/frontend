@@ -9,29 +9,30 @@
 
 .right-col {
   width: 30%;
+}
 
-  &.volunteers-container {
-    padding: 12px;
-    display: flex;
-    align-items: center;
-    display: block;
-  }
+.header-style {
+  padding-bottom: 20px;
+}
 
-  &.announcements-container {
-    padding: 12px;
-    display: flex;
-    align-items: center;
-    display: block;
-    padding-bottom: 30px;
-    margin-bottom: 30px;
-  }
+.volunteers-container {
+  padding: 12px;
+  align-items: center;
+  padding-bottom: 30px;
+  display: block;
+}
 
-  &.events-container {
-    padding: 12px;
-    display: flex;
-    align-items: center;
-    display: block;
-    padding-bottom: 30px;
-    margin-bottom: 30px;
-  }
+.announcements-container {
+  padding: 12px;
+  display: block;
+  align-items: center;
+  padding-bottom: 30px;
+}
+
+.events-container {
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  display: block;
+  padding-bottom: 30px;
 }
