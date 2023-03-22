@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Cat from "../assets/blurby-cat.jpg";
 import { AvatarGroup, Avatar, Card } from '@mui/material';
 import { Favorite, FavoriteBorderOutlined } from "@mui/icons-material";
+import { CardActionArea } from '@mui/material';
 
 const InitiativeCard = ({ img, title, subtitle, location, volunteerData }) => {
   // State objects for data
@@ -20,6 +21,7 @@ const InitiativeCard = ({ img, title, subtitle, location, volunteerData }) => {
         background: `linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${img})`,
       }}
     >
+      <CardActionArea>
       <div className="initiativeCard--text">
         <p className="initiativeCard--location">{location.toUpperCase()}</p>
         <div className="initiativeCard--title">
@@ -61,6 +63,7 @@ const InitiativeCard = ({ img, title, subtitle, location, volunteerData }) => {
           </div>
         </div>
       </div>
+      </CardActionArea>
     </Card>
   );
 };

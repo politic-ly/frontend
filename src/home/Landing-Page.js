@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '@mui/material';
 import Logo from '../assets/politicly-logo';
+import Stripes from '../assets/login-stripes';
 
 const LandingPage = ({login}) => {
 
@@ -10,7 +11,11 @@ const LandingPage = ({login}) => {
     // });
 
     return (
-        <div className="container">
+        <div>
+            {/* <div className="stripes">
+            <Stripes />
+            </div> */}
+            <div className="container">
             <div className='logo logo-container'>
                 <Logo />
             </div>
@@ -18,6 +23,7 @@ const LandingPage = ({login}) => {
             <Button variant="contained" className="button citizen" onClick={() => login()}>Citizen</Button>
             <Button variant="contained" className="button politican" onClick={() => login()}>Politican</Button>
             <Button variant="contained" className="button admin" onClick={() => login()}>Admin</Button>
+            </div>
         </div>
     )
 }

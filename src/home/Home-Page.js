@@ -3,6 +3,8 @@ import ExploreBlock from './Blocks/Explore-Block';
 import InitiativesBlock from './Blocks/Initiatives-Block';
 import NewsBlock from './Blocks/News-Block';
 import { Card } from '@mui/material';
+import { CardActionArea } from '@mui/material';
+import { NavLink } from 'react-router-dom';
 
 const Home = () => {
   const explores = 4;
@@ -16,7 +18,11 @@ const Home = () => {
             <div className='explore-wrapper'>
             {[...Array(explores)].map((e, i) => (
               <Card key={i}>
-                  <ExploreBlock/>
+                <CardActionArea>
+                  <NavLink to='/initiative' className={e => (e.isActive ? 'navigation--item active' : 'navigation--item')}>
+                    <ExploreBlock/>
+                  </NavLink>
+                </CardActionArea>
               </Card>
             ))}
             </div>
@@ -27,7 +33,9 @@ const Home = () => {
             <div className='initiatives-wrapper'>
             {[...Array(initiatives)].map((e, i) => (
               <Card key={i}>
+                <CardActionArea>
                   <InitiativesBlock/>
+                  </CardActionArea>
               </Card>
             ))}
             </div>
@@ -40,7 +48,9 @@ const Home = () => {
           <div className='news-wrapper'>
                 {[...Array(news)].map((e, i) => (
                   <Card key={i}>
+                    <CardActionArea>
                       <NewsBlock/>
+                      </CardActionArea>
                   </Card>
                 ))}
           </div>
