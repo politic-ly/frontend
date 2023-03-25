@@ -78,14 +78,22 @@ function Initiative() {
       </div>
       <div className="right-col">
         <div className="volunteers-container test">
-          <h2 className="header-style">
-            <b>Volunteers</b>
-          </h2>
+          <div className="header-container">
+            <h2>
+              <b>Volunteers</b>
+            </h2>
+            <NavLink to='/announcements' className = "view-all">
+              view all
+            </NavLink>
+          </div>
         </div>
         <div className="announcements-container test">
-          <h2 className="header-style">
+          <div className="header-container">
+            <h2>
             <b>Recent Announcements</b>
           </h2>
+          <p className = "view-all">view all</p>
+          </div>
           <Box sx={{ width: '100%' }}>
             <Stack spacing={2}>
               <Item className="announcement-box">Item 1</Item>
@@ -95,9 +103,12 @@ function Initiative() {
           </Box>
         </div>
         <div className="events-container">
-          <h2 className="header-style">
-            <b>Upcoming Events</b>
-          </h2>
+          <div className="header-container">
+            <h2>
+              <b>Upcoming Events</b>
+            </h2>
+            <p className = "view-all">view all</p>
+          </div>
           <Box sx={{ width: '100%' }}>
             <Stack spacing={2}>
               <Item2>Item 1</Item2>

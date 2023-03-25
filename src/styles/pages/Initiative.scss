@@ -11,8 +11,15 @@
   width: 30%;
 }
 
-.header-style {
+.header-container {
   padding-bottom: 20px;
+  display: flex;
+}
+
+.view-all {
+  margin-top: 7px;
+  margin-right: 0px;
+  margin-left: auto;
 }
 
 .volunteers-container {
