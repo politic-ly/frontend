@@ -5,13 +5,26 @@ import { Stack } from '@mui/material';
 import { Box } from '@mui/material';
 import { Paper } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import { Breadcrumbs } from '@mui/material';
+import { Link } from '@mui/material';
+import { Typography } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { NavLink } from 'react-router-dom';
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  backgroundColor: 'rgb(166, 233, 216)',
   ...theme.typography.body2,
   padding: theme.spacing(1),
   textAlign: 'center',
-  color: theme.palette.text.secondary,
+  height: '35px',
+}));
+
+const Item2 = styled(Paper)(({ theme }) => ({
+  backgroundColor: 'rgb(223, 183, 235)',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  height: '35px',
 }));
 
 function Initiative() {
@@ -32,6 +45,18 @@ function Initiative() {
 
 
   return (
+    <div>
+     <div className="breadcrumb-containter">
+     <NavLink to='/' className="back-arrow">
+        <ArrowBackIcon />
+      </NavLink>
+      <Breadcrumbs aria-label="breadcrumb">
+        <Link underline="hover" color="inherit" href="/">
+          Explore Page
+        </Link>
+        <Typography color="text.primary">Initiative</Typography>
+    </Breadcrumbs>
+    </div> 
     <div className="page-wrapper flex-container">
       <div className="left-col">
         <img src={pic} alt="initiative photo"></img>
@@ -63,7 +88,7 @@ function Initiative() {
           </h2>
           <Box sx={{ width: '100%' }}>
             <Stack spacing={2}>
-              <Item>Item 1</Item>
+              <Item className="announcement-box">Item 1</Item>
               <Item>Item 2</Item>
               <Item>Item 3</Item>
             </Stack>
@@ -75,13 +100,14 @@ function Initiative() {
           </h2>
           <Box sx={{ width: '100%' }}>
             <Stack spacing={2}>
-              <Item>Item 1</Item>
-              <Item>Item 2</Item>
-              <Item>Item 3</Item>
+              <Item2>Item 1</Item2>
+              <Item2>Item 2</Item2>
+              <Item2>Item 3</Item2>
             </Stack>
           </Box>
         </div>
       </div>
+    </div>
     </div>
   );
 }
