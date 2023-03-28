@@ -10,6 +10,11 @@ const LandingPage = ({login}) => {
     //     onError: (error) => console.log('Login Failed:', error)
     // });
 
+    //from initiativeCard.js
+    // className="initiativeCard"
+    //   style={{
+    //     background: `linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${img})`,
+    //   }}
     return (
         <div>
             {/* <div className="stripes">

@@ -12,6 +12,8 @@ import News from './news/News-Page';
 import Favorites from './favorites/Favorites-Page';
 import CreateInitiative from './create/CreateInitiative';
 import Initiative from './initiative/initiative';
+import Announcements from './announcements/announcements';
+import Events from './events/events';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -27,6 +29,8 @@ root.render(
               <Route path="/news" element={<News/>}/>
               <Route path="/favorites" element={<Favorites/>}/>
               <Route path="/initiative" element={<Initiative/>}/>
+              <Route path="/announcements" element={<Announcements/>}/>
+              <Route path="/events" element={<Events/>}/>
               <Route path="/createinitiative" element={<CreateInitiative/>}/>
             </Route>
           </Routes>
