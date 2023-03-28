@@ -10,13 +10,15 @@ import { Link } from '@mui/material';
 import { Typography } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { NavLink } from 'react-router-dom';
+import CampaignOutlinedIcon from '@mui/icons-material/CampaignOutlined';
+import EventOutlinedIcon from '@mui/icons-material/EventOutlined';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: 'rgb(166, 233, 216)',
   ...theme.typography.body2,
   padding: theme.spacing(1),
   textAlign: 'center',
-  height: '35px',
+  height: '38px',
 }));
 
 const Item2 = styled(Paper)(({ theme }) => ({
@@ -24,7 +26,7 @@ const Item2 = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
   padding: theme.spacing(1),
   textAlign: 'center',
-  height: '35px',
+  height: '38px',
 }));
 
 function Initiative() {
@@ -48,7 +50,9 @@ function Initiative() {
     <div>
      <div className="breadcrumb-containter">
      <NavLink to='/' className="back-arrow">
-        <ArrowBackIcon />
+        <ArrowBackIcon sx={{
+          "&:hover": { color: "#906F9B" },
+  }}/>
       </NavLink>
       <Breadcrumbs aria-label="breadcrumb">
         <Link underline="hover" color="inherit" href="/">
@@ -92,13 +96,45 @@ function Initiative() {
             <h2>
             <b>Recent Announcements</b>
           </h2>
-          <p className = "view-all">view all</p>
+          <NavLink to='/announcements' className = "view-all">
+            view all
+          </NavLink>
           </div>
           <Box sx={{ width: '100%' }}>
             <Stack spacing={2}>
-              <Item className="announcement-box">Item 1</Item>
-              <Item>Item 2</Item>
-              <Item>Item 3</Item>
+              <Item>
+                <div className="card-content">
+                <div className="card-icon">
+                <CampaignOutlinedIcon fontSize="large" style={{ color: "#709E93" }}/>
+                </div>
+                <div className="card-text">
+                  <b>Card Title</b>
+                  <p>Announcement description</p>
+                </div>
+              </div>
+              </Item>
+              <Item>
+                <div className="card-content">
+                <div className="card-icon">
+                <CampaignOutlinedIcon fontSize="large" style={{ color: "#709E93" }}/>
+                </div>
+                <div className="card-text">
+                  <b>Card Title</b>
+                  <p>Announcement description</p>
+                </div>
+              </div>
+              </Item>
+              <Item>
+                <div className="card-content">
+                <div className="card-icon">
+                <CampaignOutlinedIcon fontSize="large" style={{ color: "#709E93" }}/>
+                </div>
+                <div className="card-text">
+                  <b>Card Title</b>
+                  <p>Announcement description</p>
+                </div>
+              </div>
+              </Item>
             </Stack>
           </Box>
         </div>
@@ -107,13 +143,45 @@ function Initiative() {
             <h2>
               <b>Upcoming Events</b>
             </h2>
-            <p className = "view-all">view all</p>
+            <NavLink to='/events' className = "view-all">
+              view all
+            </NavLink>
           </div>
           <Box sx={{ width: '100%' }}>
             <Stack spacing={2}>
-              <Item2>Item 1</Item2>
-              <Item2>Item 2</Item2>
-              <Item2>Item 3</Item2>
+            <Item2>
+                <div className="card-content">
+                <div className="card-icon">
+                <CampaignOutlinedIcon fontSize="large" style={{ color: "#906F9B" }}/>
+                </div>
+                <div className="card-text">
+                  <b>Card Title</b>
+                  <p>Announcement description</p>
+                </div>
+              </div>
+              </Item2>
+              <Item2>
+                <div className="card-content">
+                <div className="card-icon">
+                <CampaignOutlinedIcon fontSize="large" style={{ color: "#906F9B" }}/>
+                </div>
+                <div className="card-text">
+                  <b>Card Title</b>
+                  <p>Announcement description</p>
+                </div>
+              </div>
+              </Item2>
+              <Item2>
+                <div className="card-content">
+                <div className="card-icon">
+                <CampaignOutlinedIcon fontSize="large" style={{ color: "#906F9B" }}/>
+                </div>
+                <div className="card-text">
+                  <b>Card Title</b>
+                  <p>Announcement description</p>
+                </div>
+              </div>
+              </Item2>
             </Stack>
           </Box>
         </div>

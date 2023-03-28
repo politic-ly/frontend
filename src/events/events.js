@@ -46,7 +46,7 @@ function Events() {
 
   return (
     <div>
-     announcements page
+     events page
     </div>
   );
 }
