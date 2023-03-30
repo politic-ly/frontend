@@ -1,0 +1,77 @@
+.flex-container {
+  display: flex;
+  position: relative;
+}
+
+.left-col {
+  width: 70%;
+}
+
+.right-col {
+  width: 30%;
+}
+
+.header-container {
+  padding-bottom: 20px;
+  display: flex;
+}
+
+.view-all {
+  margin-top: 7px;
+  margin-right: 0px;
+  margin-left: auto;
+}
+
+.volunteers-container {
+  padding: 12px;
+  align-items: center;
+  padding-bottom: 30px;
+  display: block;
+}
+
+.announcements-container {
+  padding: 12px;
+  display: block;
+  align-items: center;
+  padding-bottom: 25px;
+}
+
+.events-container {
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  display: block;
+  padding-bottom: 30px;
+}
+
+.breadcrumb-containter {
+  background-color: rgb(255, 210, 87);
+  display: flex;
+}
+
+.back-arrow {
+  margin-top: 13px;
+  margin-left: 10px;
+}
+
+.card-content {
+  display: flex;
+}
+
+.card-icon {
+  padding-right: 10px;
+}
+
+.card-text {
+  text-align: left;
+}
+
+.left-half {
+  width: 50%;
+  padding-right: 5px;
+}
+
+.right-half {
+  width: 50%;
+  padding-left: 5px;
+}

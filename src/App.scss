@@ -1,16 +1,17 @@
-@import './styles/utilities/_variables.scss';
-@import './styles/components/Card.scss';
-@import './styles/components/Navigation.scss';
-@import './styles/pages/HomePage.scss';
-@import './styles/pages/ExplorePage.scss';
-@import './styles/pages/FavoritesPage.scss';
-@import './styles/pages/Create.scss';
+@import "./styles/utilities/_variables.scss";
+@import "./styles/components/Card.scss";
+@import "./styles/components/Navigation.scss";
+@import "./styles/pages/HomePage.scss";
+@import "./styles/pages/ExplorePage.scss";
+@import "./styles/pages/FavoritesPage.scss";
+@import "./styles/pages/Create.scss";
 @import "./styles/pages/LandingPage.scss";
+@import "./styles/pages/Initiative.scss";
 
 body {
-    background-color: $background;
-    font-family: 'Inter', sans-serif;
-    color: $text-standard;
+  background-color: $background;
+  font-family: "Inter", sans-serif;
+  color: $text-standard;
 }
 
 h1,
