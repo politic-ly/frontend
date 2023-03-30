@@ -48,7 +48,7 @@ function Announcements() {
   return (
     <div>
         <div className="breadcrumb-containter">
-        <NavLink to='/' className="back-arrow">
+        <NavLink to='/initiative' className="back-arrow">
         <ArrowBackIcon sx={{
           "&:hover": { color: "#906F9B" },
       }}/>
