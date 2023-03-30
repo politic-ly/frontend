@@ -63,6 +63,8 @@ function Announcements() {
         <Typography color="text.primary">Announcements</Typography>
     </Breadcrumbs>
     </div>
+    <div className="page-wrapper flex-container">
+    <div className="left-half">
      <Box sx={{ width: '100%' }}>
         <Stack spacing={2}>
             <Item>
@@ -100,6 +102,47 @@ function Announcements() {
             </Item>
         </Stack>
       </Box>
+      </div>
+      <div className="right-half">
+     <Box sx={{ width: '100%' }}>
+        <Stack spacing={2}>
+            <Item>
+            <div className="card-content">
+            <div className="card-icon">
+            <CampaignOutlinedIcon fontSize="large" style={{ color: "#709E93" }}/>
+            </div>
+            <div className="card-text">
+                <b>Card Title</b>
+                <p>Announcement description</p>
+            </div>
+            </div>
+            </Item>
+            <Item>
+            <div className="card-content">
+            <div className="card-icon">
+            <CampaignOutlinedIcon fontSize="large" style={{ color: "#709E93" }}/>
+            </div>
+            <div className="card-text">
+                <b>Card Title</b>
+                <p>Announcement description</p>
+            </div>
+            </div>
+            </Item>
+            <Item>
+            <div className="card-content">
+            <div className="card-icon">
+            <CampaignOutlinedIcon fontSize="large" style={{ color: "#709E93" }}/>
+            </div>
+            <div className="card-text">
+                <b>Card Title</b>
+                <p>Announcement description</p>
+            </div>
+            </div>
+            </Item>
+        </Stack>
+      </Box>
+      </div>
+      </div>
     </div>
   );
 }
