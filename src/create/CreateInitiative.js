@@ -1,77 +1,149 @@
-import React, { useState, useMemo, useRef } from "react";
+import React, { useState, useMemo, useRef, useEffect } from "react";
 import {
   Button,
   Chip,
-  FormControl,
   IconButton,
-  InputAdornment,
-  InputLabel,
-  OutlinedInput,
   Step,
   Stepper,
   StepLabel,
   TextField,
 } from "@mui/material";
-import { Add } from "@mui/icons-material";
+import axios from "axios";
+import { Add, Delete } from "@mui/icons-material";
 
 const CreateInitiative = () => {
   const [activeStep, setActiveStep] = useState(0);
+
   const [tags, setTags] = useState([]);
-  const [tagValue, setTagValue] = useState("");
+  // const [tagValue, setTagValue] = useState("");
+  const [successfulSubmit, setSuccessfulSubmit] = useState(false);
+
   const tagRef = useRef();
   const steps = ["Required Information", "Additional Details", "Upload Media"];
 
+  useEffect(() => {}, [tags]);
+
+  const handleDeleteTags = (deletedTag) => {
+    let tempTags = tags;
+    tempTags.map((tag, index) => {
+      if (tag === deletedTag) {
+        tempTags.splice(index, 1);
+      }
+    });
+    setTags([...tempTags]);
+  };
+
   const addTag = () => {
-    setTagValue(tagRef.current.value)
-    let tempTags = tags;
-    tempTags.push(tagValue);
-    setTags(tempTags);
-    setTagValue("");
-    console.log(tags)
-    console.log(tagRef.current.value)
-    // resetInput()
+    setTags([...tags, tagRef.current.value]);
+    tagRef.current.value = "";
   };
-
-  const deleteTag = (deletedTag) => {
-    let tempTags = tags;
-    tempTags.push(deletedTag);
-    setTags(tempTags);
-  };
-
-  // const resetInput = () => {
-  //   tagRef.current.value = "";
-  //   setTagValue("")
-  // }
 
   const handleBackStep = () => {
     setActiveStep(activeStep - 1);
   };
 
+  const submitForm = () => {
+    // const imagesName = [];
+    // images.map((image) => {
+    //   imagesName.push(image.name);
+    // });
+    console.log(images);
+    const formData = new FormData();
+    formData.append("title", requiredInfo.title);
+    formData.append("location", requiredInfo.location);
+    formData.append("shortDescription", requiredInfo.shortDescription);
+    formData.append("fullDescription", requiredInfo.longDescription);
+    formData.append("tags", tags);
+    for (let i = 0; i < images.length; i++) {
+      formData.append("images", images[i]);
+    }
+
+    // const formData = {
+    //   title: requiredInfo.title,
+    //   location: requiredInfo.location,
+    //   shortDescription: requiredInfo.shortDescription,
+    //   fullDescription: requiredInfo.longDescription,
+    //   tags: tags,
+    //   images: [],
+    // }
+
+    axios
+      .post("http://localhost:5152/initiatives", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          setSuccessfulSubmit(true);
+        }
+        console.log(res);
+      });
+  };
+
   const handleStep = () => {
+    if (activeStep === 2) {
+      // submit form
+      submitForm();
+    }
     setActiveStep(activeStep + 1);
   };
 
+  const TagsChips = () => {
+    return (
+      <div className="createInitiative--tagsChips">
+        {tags.map((tag) => {
+          return (
+            <Chip
+              className="createInitiative--tagChip"
+              key={tag}
+              label={tag}
+              onDelete={() => handleDeleteTags(tag)}
+              color="secondary"
+              style={{ marginRight: "5px" }}
+            />
+          );
+        })}
+      </div>
+    );
+  };
+
+  const [requiredInfo, setRequiredInfo] = useState({
+    title: "",
+    location: "",
+    shortDescription: "",
+    longDescription: "",
+  });
+  const handleRequiredInfoChange = (e) =>
+    setRequiredInfo({ ...requiredInfo, [e.target.name]: e.target.value });
+
   const RequiredInfo = () => {
     return (
-      <form
-        className="createInitiative--requiredInfo page-wrapper"
-        onSubmit={(e) => test(e)}
-      >
+      <form className="createInitiative--requiredInfo page-wrapper">
         <TextField
           className="createInitiative--textInput"
           label="Title"
+          name="title"
           color="secondary"
+          value={requiredInfo.title}
+          onChange={handleRequiredInfoChange}
         />
         <TextField
           className="createInitiative--textInput"
           label="Location"
           color="secondary"
+          name="location"
+          value={requiredInfo.location}
+          onChange={handleRequiredInfoChange}
         />
         <TextField
           className="createInitiative--textInput"
           label="Short Description"
           placeholder="Max 100 words"
           color="secondary"
+          name="shortDescription"
+          value={requiredInfo.shortDescription}
+          onChange={handleRequiredInfoChange}
         />
         <TextField
           className="createInitiative--textInput"
@@ -79,9 +151,17 @@ const CreateInitiative = () => {
           color="secondary"
           multiline
           rows={5}
+          name="longDescription"
+          value={requiredInfo.longDescription}
+          onChange={handleRequiredInfoChange}
         />
       </form>
     );
+  };
+  const enterKey = (e) => {
+    if (e.key === "Enter") {
+      addTag();
+    }
   };
 
   const AdditionalDetails = () => {
@@ -90,36 +170,98 @@ const CreateInitiative = () => {
       <form className="page-wrapper">
         <div className="createInitiative--addTagsGroup">
           <TextField
-            id="addTaPgInput"
+            id="addTagInput"
             label="Tags"
             variant="outlined"
             color="secondary"
+            onKeyDown={(e) => {
+              enterKey(e);
+            }}
             inputRef={tagRef}
-            // onChange={(e) => setTagValue(e.target.value)}
           />
           <IconButton
             aria-label="add tag"
             // disabled={tagValue == ""}
-            onClick={() => addTag()}
+            onClick={() => {
+              setTags([...tags, tagRef.current.value]);
+              tagRef.current.value = "";
+            }}
           >
             <Add />
           </IconButton>
         </div>
-        {/* {tags.map((tag) => {
-          return (
-            tag
-          );
-        })} */}
+        <TagsChips />
       </form>
     );
   };
+
+  // create a function that lets user upload multiple images
+
+  const [images, setImages] = useState([]);
+
+  const handleImageUpload = (index, event) => {
+    const uploadedImage = event.target.files[0];
+    setImages((prevImages) => {
+      const newImages = [...prevImages];
+      newImages[index] = uploadedImage;
+      return newImages;
+    });
+  };
+
+  const handleImageDelete = (index) => {
+    setImages((prevImages) => {
+      const newImages = [...prevImages];
+      newImages.splice(index, 1);
+      return newImages;
+    });
+  };
+
+  const handleAddMoreImages = () => {
+    setImages((prevImages) => [...prevImages, null]);
+  };
+
+  const UploadMedia = () => {
+    // let user upload multiple images
+    return (
+      <form className="page-wrapper">
+        {images.map((image, index) => (
+          <div key={index} className="createInitiative--imageUploadField">
+            <Button component="label">
+              Select Image:
+              <input
+                hidden
+                accept="image/*"
+                type="file"
+                onChange={(event) => handleImageUpload(index, event)}
+              />
+            </Button>
+            {image && (
+              <div>
+                <span>{image.name}</span>
+                <IconButton
+                  type="button"
+                  onClick={() => handleImageDelete(index)}
+                >
+                  <Delete></Delete>
+                </IconButton>
+              </div>
+            )}
+          </div>
+        ))}
+        <Button onClick={handleAddMoreImages}>Add Image</Button>
+      </form>
+    );
+  };
+
+  const requiredInfoMemoized = useMemo(() => RequiredInfo());
 
   const renderFormContent = (step) => {
     switch (step) {
       case 0:
         return (
           <div className="createInitiative--formContainer">
-            <RequiredInfo />
+            {/* <RequiredInfo /> */}
+            {requiredInfoMemoized}
           </div>
         );
       case 1:
@@ -128,6 +270,24 @@ const CreateInitiative = () => {
             <AdditionalDetails />
           </div>
         );
+      case 2:
+        return (
+          <div className="createInitiative--formContainer">
+            <UploadMedia />
+          </div>
+        );
+      case 3:
+        return (
+          <div>
+            <h1>
+              {successfulSubmit
+                ? "Successfully Submitted!"
+                : "Failed to Submit"}
+            </h1>
+          </div>
+        );
+      default:
+        return null;
     }
   };
 
@@ -149,7 +309,8 @@ const CreateInitiative = () => {
           );
         })}
       </Stepper>
-      {useMemo(() => renderFormContent(activeStep), [activeStep])}
+      {renderFormContent(activeStep)}
+      {/* {useMemo(() => renderFormContent(activeStep), [activeStep])} */}
       <div className="createInitiative--stepButtons">
         <Button
           color="inherit"
@@ -159,7 +320,7 @@ const CreateInitiative = () => {
           Back
         </Button>
         <Button color="inherit" onClick={() => handleStep()}>
-          {activeStep === 2 ? "Finish" : "Next"}
+          {activeStep === 2 ? "Finish" : activeStep >= 3 ? "" : "Next"}
         </Button>
       </div>
     </div>
