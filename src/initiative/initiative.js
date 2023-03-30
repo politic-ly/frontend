@@ -11,7 +11,7 @@ import { Typography } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { NavLink } from 'react-router-dom';
 import CampaignOutlinedIcon from '@mui/icons-material/CampaignOutlined';
-import EventOutlinedIcon from '@mui/icons-material/EventOutlined';
+import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: 'rgb(166, 233, 216)',
@@ -81,7 +81,7 @@ function Initiative() {
         </span>
       </div>
       <div className="right-col">
-        <div className="volunteers-container test">
+        <div className="volunteers-container">
           <div className="header-container">
             <h2>
               <b>Volunteers</b>
@@ -152,7 +152,7 @@ function Initiative() {
             <Item2>
                 <div className="card-content">
                 <div className="card-icon">
-                <CampaignOutlinedIcon fontSize="large" style={{ color: "#906F9B" }}/>
+                <CalendarTodayOutlinedIcon fontSize="large" style={{ color: "#906F9B" }}/>
                 </div>
                 <div className="card-text">
                   <b>Card Title</b>
@@ -163,7 +163,7 @@ function Initiative() {
               <Item2>
                 <div className="card-content">
                 <div className="card-icon">
-                <CampaignOutlinedIcon fontSize="large" style={{ color: "#906F9B" }}/>
+                <CalendarTodayOutlinedIcon fontSize="large" style={{ color: "#906F9B" }}/>
                 </div>
                 <div className="card-text">
                   <b>Card Title</b>
@@ -174,7 +174,7 @@ function Initiative() {
               <Item2>
                 <div className="card-content">
                 <div className="card-icon">
-                <CampaignOutlinedIcon fontSize="large" style={{ color: "#906F9B" }}/>
+                <CalendarTodayOutlinedIcon fontSize="large" style={{ color: "#906F9B" }}/>
                 </div>
                 <div className="card-text">
                   <b>Card Title</b>
