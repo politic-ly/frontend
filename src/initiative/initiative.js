@@ -81,7 +81,7 @@ function Initiative() {
         </span>
       </div>
       <div className="right-col">
-        <div className="volunteers-container test">
+        <div className="volunteers-container">
           <div className="header-container">
             <h2>
               <b>Volunteers</b>
