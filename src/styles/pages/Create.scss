@@ -6,17 +6,31 @@
     }
 
     &--banner {
-        width: 100vw;
         position: relative;
-        padding: 12px;
+        padding: 12px 0 12px 12px;
         margin-bottom: 24px;
         left: 0;
-        right: 0;
         background: $brand-03;
     }
 
     &--textInput {
         margin-bottom: 12px !important;
+    }
+
+    &--addTagsGroup {
+        display: flex;
+    }
+    &--addImages {
+        display: flex;
+        align-items: center;
+        &--fileName{
+            margin-left: 8px;
+        }
+    }
+
+    &--imageUploadField {
+        display: flex;
+        align-items: center;
     }
 
     &--requiredInfo {
@@ -26,6 +40,13 @@
 
     &--stepButtons {
         text-align: center;
+    }
+
+    &--tagsChips {
+        margin: 8px 8px 8px 0;
+    }
+    &--tagChip {
+        margin: 8px;
     }
 }
 
