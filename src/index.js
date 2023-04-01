@@ -1,42 +1,41 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { GoogleOAuthProvider } from '@react-oauth/google';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './home/Home-Page';
-import Explore from './explore/Explore-Page';
-import Account from './account/Account';
-import News from './news/News-Page';
-import Favorites from './favorites/Favorites-Page';
-import CreateInitiative from './create/CreateInitiative';
-import Initiative from './initiative/initiative';
-import Announcements from './announcements/announcements';
-import Events from './events/events';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./home/Home-Page";
+import Explore from "./explore/Explore-Page";
+import Account from "./account/Account";
+import News from "./news/News-Page";
+import Favorites from "./favorites/Favorites-Page";
+import CreateInitiative from "./create/CreateInitiative";
+import Initiative from "./initiative/initiative";
+import Announcements from "./announcements/announcements";
+import Events from "./events/events";
 
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
-      <React.StrictMode>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<App />} >
-              <Route path="/" element={<Home/>}/>
-              <Route path="/explore" element={<Explore/>}/>
-              <Route path="/account" element={<Account/>}/>
-              <Route path="/news" element={<News/>}/>
-              <Route path="/favorites" element={<Favorites/>}/>
-              <Route path="/initiative" element={<Initiative/>}/>
-              <Route path="/announcements" element={<Announcements/>}/>
-              <Route path="/events" element={<Events/>}/>
-              <Route path="/createinitiative" element={<CreateInitiative/>}/>
-            </Route>
-          </Routes>
-        </BrowserRouter> 
-      </React.StrictMode>
-    </GoogleOAuthProvider>
+    <React.StrictMode>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/explore" element={<Explore />} />
+            <Route path="/account" element={<Account />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/favorites" element={<Favorites />} />
+            <Route path="/initiative/:id" element={<Initiative />} />
+            <Route path="/announcements" element={<Announcements />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/initiative/new" element={<CreateInitiative />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </React.StrictMode>
+  </GoogleOAuthProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
