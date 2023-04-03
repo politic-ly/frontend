@@ -10,6 +10,7 @@ const Home = () => {
   const explores = 4;
   const initiatives = 6;
   const news = 6;
+  
     return (
       <div className="column-wrapper">
         <div className="row-wrapper">
