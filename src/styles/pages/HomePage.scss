@@ -1,51 +1,59 @@
-.column-wrapper{
-    padding: 10px;
-    display:grid;
-    grid-template-columns: 7fr 3fr;
-    height: 80vh;
-    grid-column-gap: 1em;
-    .news-wrapper {
-        padding-top: 5px;
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-gap: 1em;
-        height: 100%;
-        div{
-            background-color: gainsboro;
-        }
+.column-wrapper {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 7fr 3fr;
+  height: 80vh;
+  grid-column-gap: 1em;
+  .news-wrapper {
+    padding-top: 5px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1em;
+    height: 100%;
+    div {
+      background-color: gainsboro;
     }
+  }
 }
 
-.row-wrapper{
-    display:grid;
-    grid-template-rows: 1fr 1fr;
-    grid-row-gap: 2em;
+.row-wrapper {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-row-gap: 2em;
 
-    .explore-wrapper{
-        padding-top: 5px;
-        display: grid;
-        grid-template-columns: 5fr 2fr;
-        grid-gap: 1em;
-        height: 100%;
-        div{
-            background-color: gainsboro;
-        }
-        :first-child{
-            grid-row-start: 1;
-        grid-row-end: 4;
-        }
+  .explore-wrapper {
+    padding-top: 5px;
+    display: grid;
+    grid-template-columns: 5fr 2fr;
+    grid-gap: 1em;
+    height: 100%;
+    div {
+      background-color: gainsboro;
     }
-    .initiatives-wrapper{
-        // grid two columns of equal widths
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 1em;
-        height: 100%;
-        div{
-            background-color: gainsboro;
-        }
+    :first-child {
+      grid-row-start: 1;
+      grid-row-end: 4;
     }
+  }
+  .initiatives-wrapper {
+    // grid two columns of equal widths
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1em;
+    height: 100%;
+    div {
+      background-color: gainsboro;
+    }
+  }
+}
 
-    
+.fab-container {
+  display: flex;
+  justify-content: center;
+}
 
+.fab {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 35px;
 }
