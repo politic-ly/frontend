@@ -1,23 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import InitiativeCard from "../cards/InitiativeCard";
 import pic from "../assets/blurby-cat.jpg";
-import axios from 'axios';
+import { getAllInitiatives } from "../apis/initiatives-handler";
+
 function Favorites() {
-  const [data,setData]=useState([]);
-  const getData=()=>{
-    axios.get('http://localhost:5152/initiatives')
-      .then(function(response){
+  const [data, setData] = useState([]);
+  const getData = () => {
+    getAllInitiatives()
+      .then(function (response) {
         return response.data;
       })
-      .then(function(myJson) {
-        setData(myJson)
+      .then(function (myJson) {
+        setData(myJson);
       });
-  }
-  useEffect(()=>{
+  };
+  useEffect(() => {
     getData();
-
-  },[])
-
+  }, []);
 
   return (
     <div className="page-wrapper">
@@ -32,14 +31,15 @@ function Favorites() {
       <div className="favorites-wrapper">
         {data.map((initiative, i) => (
           <div key={i}>
-              <InitiativeCard
-                // img={`../assets/${initiative.images[0]}`}
-                img={pic}
-                title={initiative.title}
-                subtitle={initiative.summary}
-                location={initiative.location}
-                volunteerData={initiative.followers}
-              />
+            <InitiativeCard
+              // img={`../assets/${initiative.images[0]}`}
+              id={initiative._id}
+              img={pic}
+              title={initiative.title}
+              subtitle={initiative.summary}
+              location={initiative.location}
+              volunteerData={initiative.followers}
+            />
           </div>
         ))}
       </div>

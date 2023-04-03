@@ -8,15 +8,16 @@ import {
   StepLabel,
   TextField,
 } from "@mui/material";
-import axios from "axios";
 import { Add, Delete } from "@mui/icons-material";
+import { postInitiative } from "../apis/initiatives-handler";
+import { useOutletContext } from "react-router-dom";
 
 const CreateInitiative = () => {
   const [activeStep, setActiveStep] = useState(0);
 
   const [tags, setTags] = useState([]);
-  // const [tagValue, setTagValue] = useState("");
   const [successfulSubmit, setSuccessfulSubmit] = useState(false);
+  const { profile } = useOutletContext();
 
   const tagRef = useRef();
   const steps = ["Required Information", "Additional Details", "Upload Media"];
@@ -43,42 +44,25 @@ const CreateInitiative = () => {
   };
 
   const submitForm = () => {
-    // const imagesName = [];
-    // images.map((image) => {
-    //   imagesName.push(image.name);
-    // });
-    console.log(images);
     const formData = new FormData();
+    const user = localStorage.getItem("user");
+    const user_id = JSON.parse(user)._id;
     formData.append("title", requiredInfo.title);
     formData.append("location", requiredInfo.location);
     formData.append("shortDescription", requiredInfo.shortDescription);
     formData.append("fullDescription", requiredInfo.longDescription);
     formData.append("tags", tags);
+    formData.append("admins", [user_id]);
     for (let i = 0; i < images.length; i++) {
       formData.append("images", images[i]);
     }
 
-    // const formData = {
-    //   title: requiredInfo.title,
-    //   location: requiredInfo.location,
-    //   shortDescription: requiredInfo.shortDescription,
-    //   fullDescription: requiredInfo.longDescription,
-    //   tags: tags,
-    //   images: [],
-    // }
-
-    axios
-      .post("http://localhost:5152/initiatives", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then((res) => {
-        if (res.status === 200) {
-          setSuccessfulSubmit(true);
-        }
-        console.log(res);
-      });
+    postInitiative(formData).then((res) => {
+      if (res.status === 200) {
+        setSuccessfulSubmit(true);
+      }
+      console.log(res);
+    });
   };
 
   const handleStep = () => {
