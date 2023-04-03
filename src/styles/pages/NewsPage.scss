@@ -1,0 +1,126 @@
+.newsPage {
+    &--wrapper {
+        // display: grid;
+        // grid-template-columns: repeat(2,1fr);
+        display: flex;
+
+        // gutters for grid display
+        column-gap: 1rem;
+        row-gap: 1rem;
+    }
+
+    &--otherArticles {
+        height: inherit;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .newsCard--card {
+            min-width: 15vw;
+        }
+    }
+}
+
+.newsCard {
+    &--standard {
+        display: flex;
+
+        .newsCard--content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 4px 12px;
+            max-width: 22vw; 
+        }
+    }
+
+    &--carousel {
+        display: flex;
+        flex-direction: column;
+        padding: 12px 12px 0 0;
+
+        .newsCard--content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 8px 0px;
+            max-width: 18vw; 
+        }
+    }
+
+    &--content {
+        h2, p { font-size: 12px; margin: 2px 0px; }
+        // p { font-size: 14px; }   
+    }
+
+    &--card {
+        max-width: 18vw;
+        height: 15vh;
+        background-size: cover !important;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &--sourceTag {
+        margin: 8px;
+        font-size: 12px;
+        font-weight: 800;
+
+        span {
+            background-color: white;
+            padding: 2px 4px;
+        }
+    }
+}
+
+.featureNewsCard {
+    &--content {
+        background-color: white;
+        margin: 12px;
+        padding: 2px 4px;
+        h2, p { font-size: 12px; margin: 2px 0px; }      
+    }
+
+    &--card {
+        margin-right: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        max-width: 45vw;
+        height: 35vh;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &--sourceTag {
+        margin: 12px;
+        font-size: 12px;
+        font-weight: 800;
+
+        span {
+            background-color: white;
+            padding: 2px 4px;
+        }
+    }
+
+    &--chevrons {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 12px;
+        color: $background;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.newsCarousel {
+    &--standardCards {
+        display: flex;
+        max-width: 45vw;
+    }
+}

@@ -1,10 +1,11 @@
-@import "./styles/utilities/_variables.scss";
-@import "./styles/components/Card.scss";
-@import "./styles/components/Navigation.scss";
-@import "./styles/pages/HomePage.scss";
-@import "./styles/pages/ExplorePage.scss";
-@import "./styles/pages/FavoritesPage.scss";
-@import "./styles/pages/Create.scss";
+@import './styles/utilities/_variables.scss';
+@import './styles/components/Card.scss';
+@import './styles/components/Navigation.scss';
+@import './styles/pages/HomePage.scss';
+@import './styles/pages/ExplorePage.scss';
+@import './styles/pages/NewsPage.scss';
+@import './styles/pages/FavoritesPage.scss';
+@import './styles/pages/Create.scss';
 @import "./styles/pages/LandingPage.scss";
 @import "./styles/pages/Initiative.scss";
 
@@ -31,16 +32,3 @@ p {
   padding: 12px;
 }
 
-.material-symbols-outlined {
-  &:hover {
-    color: $brand-02;
-  }
-
-  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
-}
-
-.material-symbols-outlined {
-  &.unfill {
-    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
-  }
-}

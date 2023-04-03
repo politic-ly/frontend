@@ -11,6 +11,12 @@
     overflow: hidden;
   }
 
+  &--item {
+    &:hover {
+      color: $brand-02;
+    }
+  }
+
   &.logo-container {
     svg {
       display: block;

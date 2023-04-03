@@ -1,59 +1,71 @@
 import React from 'react';
-import ExploreBlock from './Blocks/Explore-Block';
 import InitiativesBlock from './Blocks/Initiatives-Block';
-import NewsBlock from './Blocks/News-Block';
 import { Card } from '@mui/material';
 import { CardActionArea } from '@mui/material';
 import { NavLink } from 'react-router-dom';
+import InitiativeCard from "../cards/InitiativeCard";
+import { useEffect, useState } from 'react';
+import pic from "../assets/blurby-cat.jpg";
+import axios from 'axios';
+import { Fab } from '@mui/material';
+import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
+import RocketLaunchOutlinedIcon from '@mui/icons-material/RocketLaunchOutlined';
 
 const Home = () => {
   const explores = 4;
   const initiatives = 6;
   const news = 6;
-  
+
+  const [data,setData]=useState([]);
+  const getData=()=>{
+    axios.get('http://localhost:5152/initiatives')
+      .then(function(response){
+        return response.data;
+      })
+      .then(function(myJson) {
+        setData(myJson)
+      });
+  }
+  useEffect(()=>{
+    getData();
+
+  },[])
     return (
-      <div className="column-wrapper">
-        <div className="row-wrapper">
-          <div>
-            <b>Explore What is Going On in Your Community</b>
-            <div className='explore-wrapper'>
-            {[...Array(explores)].map((e, i) => (
-              <Card key={i}>
-                <CardActionArea>
-                  <NavLink to='/initiative' className={e => (e.isActive ? 'navigation--item active' : 'navigation--item')}>
-                    <ExploreBlock/>
-                  </NavLink>
-                </CardActionArea>
-              </Card>
-            ))}
-            </div>
-
+      <div className="page-wrapper">    
+        <div className="fab-container">
+          <div className="fab">
+          <Fab sx={{ backgroundColor: "#67b9a5",
+          "&:hover": { backgroundColor: "#e0bc58" },
+            }}>
+            <RocketLaunchOutlinedIcon sx={{ color: "#245045"}}/>
+          </Fab>
           </div>
-          <div>
-            <b>Updates on Initiatives You Follow</b>
-            <div className='initiatives-wrapper'>
-            {[...Array(initiatives)].map((e, i) => (
-              <Card key={i}>
-                <CardActionArea>
-                  <InitiativesBlock/>
-                  </CardActionArea>
-              </Card>
-            ))}
-            </div>
-
-          <div/>
+          <div className="fab">
+          <NavLink to='/' className="back-arrow">
+          <Fab sx={{ backgroundColor: "#a669df",
+          "&:hover": { backgroundColor: "#e0bc58" },
+            }}>
+            <CalendarTodayOutlinedIcon sx={{ color: "#3a2250"}}/>
+          </Fab>
+          </NavLink>
+          </div>
         </div>
-      </div>
-      <div>
-        <b>News</b>
-          <div className='news-wrapper'>
-                {[...Array(news)].map((e, i) => (
-                  <Card key={i}>
-                    <CardActionArea>
-                      <NewsBlock/>
-                      </CardActionArea>
-                  </Card>
-                ))}
+        <div>
+          <b>Explore What is Going On in Your Community</b>
+          <div className="explore-wrapper">
+          {data.map((initiative, i) => (
+          <div key={i}>
+            <NavLink to='/initiative'>
+            <InitiativeCard
+              // img={`../assets/${initiative.images[0]}`}
+              img={pic}
+              title={initiative.title}
+              subtitle={initiative.summary}
+              location={initiative.location}
+              volunteerData={initiative.followers}
+            />
+            </NavLink>
+          </div>))}
           </div>
         </div>
       </div>

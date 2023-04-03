@@ -1,8 +1,17 @@
 .favorites-wrapper {
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 
-    // gutters for grid display
-    column-gap: 1rem;
-    row-gap: 1rem;
+  // gutters for grid display
+  column-gap: 1rem;
+  row-gap: 1rem;
+}
+
+.explore-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  // gutters for grid display
+  column-gap: 1rem;
+  row-gap: 1rem;
 }
