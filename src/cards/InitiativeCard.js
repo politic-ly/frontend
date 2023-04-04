@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Cat from "../assets/blurby-cat.jpg";
 import { AvatarGroup, Avatar, Card } from "@mui/material";
 import { Favorite, FavoriteBorderOutlined } from "@mui/icons-material";
 import { CardActionArea } from "@mui/material";
@@ -15,7 +14,7 @@ const InitiativeCard = ({
   img,
   title,
   subtitle,
-  location,
+  location = "",
   volunteerData,
 }) => {
   // State objects for data
@@ -52,7 +51,7 @@ const InitiativeCard = ({
   };
   useEffect(() => {
     setVolunteerList(volunteerData);
-  }, []);
+  }, [volunteerData]);
 
   return (
     <Card
