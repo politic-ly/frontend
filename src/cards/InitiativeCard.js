@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { AvatarGroup, Avatar, Card } from "@mui/material";
 import { Favorite, FavoriteBorderOutlined } from "@mui/icons-material";
+import { CardActionArea } from "@mui/material";
+import { Link } from "react-router-dom";
+import {
+  addFavorite,
+  getFavoriteInitiatives,
+  removeFavorite,
+} from "../apis/users-handler";
 
 const InitiativeCard = ({
+  id,
   img,
   title,
   subtitle,
@@ -11,8 +19,36 @@ const InitiativeCard = ({
 }) => {
   // State objects for data
   const [volunteerList, setVolunteerList] = useState([]);
-  const [favorited, setFavorited] = useState(false);
+  const [favorited, setFavorited] = useState();
 
+  const isFavorited = () => {
+    const user = localStorage.getItem("user");
+    getFavoriteInitiatives(JSON.parse(user)._id).then((res) => {
+      if (res.status === 200) {
+        setFavorited(res.data.includes(id));
+      }
+    });
+  };
+  isFavorited();
+  const user = localStorage.getItem("user");
+  const user_id = JSON.parse(user)._id;
+
+  // Add or remove favorite
+  const toggleFavorite = () => {
+    if (favorited) {
+      removeFavorite(user_id, id).then((res) => {
+        if (res.status === 200) {
+          setFavorited(!favorited);
+        }
+      });
+    } else {
+      addFavorite(user_id, id).then((res) => {
+        if (res.status === 200) {
+          setFavorited(!favorited);
+        }
+      });
+    }
+  };
   useEffect(() => {
     setVolunteerList(volunteerData);
   }, [volunteerData]);
@@ -25,26 +61,33 @@ const InitiativeCard = ({
       }}
     >
       <div className="initiativeCard--text">
-        <p className="initiativeCard--location">{location.toUpperCase()}</p>
-        <div className="initiativeCard--title">
-          <h2>
-            <span>{title}</span>
-          </h2>
-          <p>
-            <span>{subtitle}</span>
-          </p>
-        </div>
+        <Link style={{ textDecoration: "none" }} to={"/initiative/" + id}>
+          <p className="initiativeCard--location">{location.toUpperCase()}</p>
+          <div className="initiativeCard--title">
+            <h2>
+              <span>{title}</span>
+            </h2>
+            <p>
+              <span>{subtitle}</span>
+            </p>
+          </div>
+        </Link>
       </div>
       <div className="initiativeCard--function">
         {favorited ? (
           <Favorite
             className="initiativeCard--favorited"
-            onClick={() => setFavorited(!favorited)}
+            onClick={(e) => {
+              e.stopPropagation();
+              toggleFavorite();
+            }}
           />
         ) : (
           <FavoriteBorderOutlined
             className="initiativeCard--favorited"
-            onClick={() => setFavorited(!favorited)}
+            onClick={(e) => {
+              toggleFavorite();
+            }}
           />
         )}
         <div className="initiativeCard--volunteers">
