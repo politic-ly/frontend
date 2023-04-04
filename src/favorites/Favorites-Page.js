@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import InitiativeCard from "../cards/InitiativeCard";
 import pic from "../assets/blurby-cat.jpg";
 import { getAllInitiatives } from "../apis/initiatives-handler";
+import axios from 'axios';
 
 function Favorites() {
   const [data, setData] = useState([]);
