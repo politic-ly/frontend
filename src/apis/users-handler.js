@@ -16,3 +16,15 @@ export function getUserById(id) {
 export function getAllUsers() {
   return axios.get(`${URL}/`);
 }
+
+export function addFavorite(id, initiativeId) {
+  return axios.post(`${URL}/` + id + "/favorite/" + initiativeId);
+}
+
+export function getFavoriteInitiatives(id) {
+  return axios.get(`${URL}/` + id + "/favorite");
+}
+
+export function removeFavorite(id, initiativeId) {
+  return axios.delete(`${URL}/` + id + "/favorite/" + initiativeId);
+}

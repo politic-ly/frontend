@@ -3,7 +3,12 @@ import Cat from "../assets/blurby-cat.jpg";
 import { AvatarGroup, Avatar, Card } from "@mui/material";
 import { Favorite, FavoriteBorderOutlined } from "@mui/icons-material";
 import { CardActionArea } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import {
+  addFavorite,
+  getFavoriteInitiatives,
+  removeFavorite,
+} from "../apis/users-handler";
 
 const InitiativeCard = ({
   id,
@@ -15,23 +20,50 @@ const InitiativeCard = ({
 }) => {
   // State objects for data
   const [volunteerList, setVolunteerList] = useState([]);
-  const [favorited, setFavorited] = useState(false);
+  const [favorited, setFavorited] = useState();
 
-  console.log(title);
+  const isFavorited = () => {
+    const user = localStorage.getItem("user");
+    getFavoriteInitiatives(JSON.parse(user)._id).then((res) => {
+      if (res.status === 200) {
+        setFavorited(res.data.includes(id));
+      }
+    });
+  };
+  isFavorited();
+  const user = localStorage.getItem("user");
+  const user_id = JSON.parse(user)._id;
+
+  // Add or remove favorite
+  const toggleFavorite = () => {
+    if (favorited) {
+      removeFavorite(user_id, id).then((res) => {
+        if (res.status === 200) {
+          setFavorited(!favorited);
+        }
+      });
+    } else {
+      addFavorite(user_id, id).then((res) => {
+        if (res.status === 200) {
+          setFavorited(!favorited);
+        }
+      });
+    }
+  };
   useEffect(() => {
     setVolunteerList(volunteerData);
   }, []);
 
   return (
-    <NavLink to={"/initiative/" + id}>
-      <Card
-        className="initiativeCard"
-        style={{
-          background: `linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${img})`,
-        }}
-      >
-        <CardActionArea>
-          <div className="initiativeCard--text">
+    <Card
+      className="initiativeCard"
+      style={{
+        background: `linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${img})`,
+      }}
+    >
+      <CardActionArea>
+        <div className="initiativeCard--text">
+          <Link style={{ textDecoration: "none" }} to={"/initiative/" + id}>
             <p className="initiativeCard--location">{location.toUpperCase()}</p>
             <div className="initiativeCard--title">
               <h2>
@@ -41,40 +73,45 @@ const InitiativeCard = ({
                 <span>{subtitle}</span>
               </p>
             </div>
-          </div>
-          <div className="initiativeCard--function">
-            {favorited ? (
-              <Favorite
-                className="initiativeCard--favorited"
-                onClick={() => setFavorited(!favorited)}
-              />
-            ) : (
-              <FavoriteBorderOutlined
-                className="initiativeCard--favorited"
-                onClick={() => setFavorited(!favorited)}
-              />
-            )}
-            <div className="initiativeCard--volunteers">
-              <p>{volunteerList.length} volunteers</p>
-              <div className="initiativeCard--volunteerList">
-                <AvatarGroup max={10}>
-                  {volunteerList.map((vol, index) => {
-                    return (
-                      <Avatar
-                        key={index}
-                        src={vol.profileImg}
-                        alt={vol.username}
-                        sx={{ width: 24, height: 24 }}
-                      />
-                    );
-                  })}
-                </AvatarGroup>
-              </div>
+          </Link>
+        </div>
+        <div className="initiativeCard--function">
+          {favorited ? (
+            <Favorite
+              className="initiativeCard--favorited"
+              onClick={(e) => {
+                e.stopPropagation();
+                toggleFavorite();
+              }}
+            />
+          ) : (
+            <FavoriteBorderOutlined
+              className="initiativeCard--favorited"
+              onClick={(e) => {
+                toggleFavorite();
+              }}
+            />
+          )}
+          <div className="initiativeCard--volunteers">
+            <p>{volunteerList.length} volunteers</p>
+            <div className="initiativeCard--volunteerList">
+              <AvatarGroup max={10}>
+                {volunteerList.map((vol, index) => {
+                  return (
+                    <Avatar
+                      key={index}
+                      src={vol.profileImg}
+                      alt={vol.username}
+                      sx={{ width: 24, height: 24 }}
+                    />
+                  );
+                })}
+              </AvatarGroup>
             </div>
           </div>
-        </CardActionArea>
-      </Card>
-    </NavLink>
+        </div>
+      </CardActionArea>
+    </Card>
   );
 };
 

@@ -1,17 +1,29 @@
 import React, { useEffect, useState } from "react";
 import InitiativeCard from "../cards/InitiativeCard";
 import pic from "../assets/blurby-cat.jpg";
-import { getAllInitiatives } from "../apis/initiatives-handler";
+import {
+  getInitiativesByIds,
+} from "../apis/initiatives-handler";
+import { getFavoriteInitiatives } from "../apis/users-handler";
 
 function Favorites() {
+  const user = localStorage.getItem("user");
+  const user_id = JSON.parse(user)._id;
   const [data, setData] = useState([]);
   const getData = () => {
-    getAllInitiatives()
-      .then(function (response) {
-        return response.data;
+    getFavoriteInitiatives(user_id)
+      .then((res) => {
+        if (res.status === 200) {
+          console.log(res.data);
+          return res.data;
+        }
       })
-      .then(function (myJson) {
-        setData(myJson);
+      .then((res) => {
+        getInitiativesByIds(res).then((res) => {
+          if (res.status === 200) {
+            setData(res.data);
+          }
+        });
       });
   };
   useEffect(() => {
@@ -32,11 +44,14 @@ function Favorites() {
         {data.map((initiative, i) => (
           <div key={i}>
             <InitiativeCard
-              // img={`../assets/${initiative.images[0]}`}
               id={initiative._id}
-              img={pic}
+              img={
+                initiative.images
+                  ? "http://localhost:5152" + "/" + initiative.images[0]
+                  : pic
+              }
               title={initiative.title}
-              subtitle={initiative.summary}
+              subtitle={initiative.shortDescription}
               location={initiative.location}
               volunteerData={initiative.followers}
             />

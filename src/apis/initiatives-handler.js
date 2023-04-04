@@ -21,6 +21,15 @@ export function getAllInitiatives() {
   return axios.get(URL);
 }
 
-export function getAllProfessors() {
-  return axios.get(`${URL}/`);
+export function getInitiativesByIds(ids) {
+
+  const formData = {
+    ids: ids,
+  };
+
+  return axios.post(URL + "/list/ids", formData, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 }
