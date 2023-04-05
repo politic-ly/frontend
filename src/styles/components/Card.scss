@@ -1,65 +1,76 @@
 .initiativeCard {
-    height: 110px;
-    padding: 8px;
+  height: 110px;
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &--text {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+  }
+
+  &--volunteers {
+    color: $background;
+    text-align: right;
+  }
+
+  &--volunteerList {
+    margin-top: 4px;
+  }
+
+  &--volunteer {
+    border-radius: 30px;
+    width: 32px;
+  }
+
+  &--favorited {
+    color: $background;
 
     &:hover {
-        cursor: pointer;
+      fill: $brand-02;
     }
+  }
 
-    &--text {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+  &--function {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  &--location,
+  &--volunteers {
+    font-size: 14px;
+    color: $background;
+  }
+
+  &--title {
+    h2 {
+      font-size: 18px;
+      margin: 8px 0;
     }
-
-    &--volunteers {
-        color: $background;
-        text-align: right;
+    p {
+      font-size: 12px;
+      margin: 8px 0;
     }
-
-    &--volunteerList {
-        margin-top: 4px;
+    h2 span,
+    p span {
+      background-color: white;
+      padding: 2px 4px;
     }
+  }
 
-    &--volunteer {
-        border-radius: 30px;
-        width: 32px;
+  &--eventlocation {
+    font-size: 14px;
+    margin: 8px 0;
+    span {
+      background-color: white;
+      padding: 2px 4px;
     }
-
-    &--favorited {
-        color: $background;
-
-        &:hover {
-            fill: $brand-02;
-        }
-    }
-
-    &--function {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        justify-content: space-between;
-    }
-
-    &--location, &--volunteers {
-        font-size: 14px;
-        color: $background;
-    }
-
-    &--title {
-        h2 { 
-            font-size: 18px;
-            margin: 8px 0; 
-        }
-        p { 
-            font-size: 12px;
-            margin: 8px 0; 
-        }
-        h2 span, p span {
-            background-color: white;
-            padding: 2px 4px;
-        }
-    }
+  }
 }
