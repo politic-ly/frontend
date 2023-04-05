@@ -77,6 +77,14 @@ const EventCard = ({
             <b>Recursive:</b>
             <br></br>
             <b>Description:</b>
+            <div className="user-display">
+                <div>
+                    <b>Volunteers:</b>
+                </div>
+                <div className="event-contact">
+                    <b>Event Contact: </b>
+                </div>
+            </div>
             <hr></hr> 
             <div align="right">
             {volunteered ? <Button startIcon={<CheckIcon />} style={{ color: "#67B9A5" }}>VOLUNTEERED</Button>:
