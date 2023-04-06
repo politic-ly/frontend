@@ -13,6 +13,14 @@ export function postInitiative(formData) {
   });
 }
 
+export function postEvent(initiativeId, formData) {
+  return axios.post(URL + "/" + initiativeId + "/event/new", formData, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+}
+
 export function getInitiativeById(id) {
   return axios.get(URL + "/" + id);
 }
@@ -22,7 +30,6 @@ export function getAllInitiatives() {
 }
 
 export function getInitiativesByIds(ids) {
-
   const formData = {
     ids: ids,
   };

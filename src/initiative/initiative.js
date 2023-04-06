@@ -12,7 +12,12 @@ import { NavLink } from "react-router-dom";
 import CampaignOutlinedIcon from "@mui/icons-material/CampaignOutlined";
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import { useParams } from "react-router-dom";
-import { getInitiativeById } from "../apis/initiatives-handler";
+import { format } from "date-fns";
+import {
+  getInitiativeById,
+  getInitiativesByIds,
+} from "../apis/initiatives-handler";
+import { getUserById } from "../apis/users-handler";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "rgb(166, 233, 216)",
@@ -32,6 +37,7 @@ const Item2 = styled(Paper)(({ theme }) => ({
 
 function Initiative() {
   const [data, setData] = useState({});
+  const [isOwner, setIsOwner] = useState(false);
   const { id } = useParams();
   const getData = () => {
     getInitiativeById(id)
@@ -40,8 +46,15 @@ function Initiative() {
       })
       .then(function (myJson) {
         setData(myJson);
+        if (user_id == myJson.admins[0]) {
+          setIsOwner(true);
+        }
       });
   };
+
+  const user = localStorage.getItem("user");
+  const user_id = JSON.parse(user)._id;
+
   useEffect(() => {
     getData();
   }, []);
@@ -100,22 +113,25 @@ function Initiative() {
             <Box sx={{ width: "100%" }}>
               <Stack spacing={2}>
                 {data.announcement && data.announcements.length > 0 ? (
-                  data.announcements.map((announcement) => (
-                    <Item>
-                      <div className="card-content">
-                        <div className="card-icon">
-                          <CampaignOutlinedIcon
-                            fontSize="large"
-                            style={{ color: "#709E93" }}
-                          />
-                        </div>
-                        <div className="card-text">
-                          <b>Card Title</b>
-                          <p>Announcement description</p>
-                        </div>
-                      </div>
-                    </Item>
-                  ))
+                  data.announcements.map(
+                    (announcement, index) =>
+                      index < 3 && (
+                        <Item>
+                          <div className="card-content">
+                            <div className="card-icon">
+                              <CampaignOutlinedIcon
+                                fontSize="large"
+                                style={{ color: "#709E93" }}
+                              />
+                            </div>
+                            <div className="card-text">
+                              <b>{announcement.title}</b>
+                              <p>{announcement.description}</p>
+                            </div>
+                          </div>
+                        </Item>
+                      )
+                  )
                 ) : (
                   <div>
                     <p>No New Announcements</p>
@@ -129,6 +145,14 @@ function Initiative() {
               <h2>
                 <b>Upcoming Events</b>
               </h2>
+              {isOwner ? (
+                <NavLink
+                  to={`/initiative/${id}/events/new`}
+                  className="view-all"
+                >
+                  Create New
+                </NavLink>
+              ) : null}
               <NavLink to="/events" className="view-all">
                 view all
               </NavLink>
@@ -136,22 +160,27 @@ function Initiative() {
             <Box sx={{ width: "100%" }}>
               <Stack spacing={2}>
                 {data.events && data.events.length > 0 ? (
-                  data.events.map((event) => (
-                    <Item2>
-                      <div className="card-content">
-                        <div className="card-icon">
-                          <CalendarTodayOutlinedIcon
-                            fontSize="large"
-                            style={{ color: "#906F9B" }}
-                          />
-                        </div>
-                        <div className="card-text">
-                          <b>Card Title</b>
-                          <p>Announcement description</p>
-                        </div>
-                      </div>
-                    </Item2>
-                  ))
+                  data.events.map(
+                    (event, index) =>
+                      index < 3 && (
+                        <Item2>
+                          <div className="card-content">
+                            <div className="card-icon">
+                              <CalendarTodayOutlinedIcon
+                                fontSize="large"
+                                style={{ color: "#906F9B" }}
+                              />
+                            </div>
+                            <div className="card-text">
+                              <b>{event.title}</b>
+                              <p>
+                                {format(new Date(event.date), "MM/dd/yyyy")}
+                              </p>
+                            </div>
+                          </div>
+                        </Item2>
+                      )
+                  )
                 ) : (
                   <div>
                     {" "}
