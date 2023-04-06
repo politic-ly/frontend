@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Fab } from "@mui/material";
+import { Fab, Tooltip } from "@mui/material";
 import { Today, Lightbulb } from "@mui/icons-material";
 import axios from "axios";
 import InitiativeCard from "../cards/InitiativeCard";
@@ -28,26 +28,30 @@ const Home = () => {
     <div className="page-wrapper">
       <div className="fab-container">
         <div className="fab">
-          <Fab
-            onClick={() => setSetShowEvents(false)}
-            sx={{
-              backgroundColor: "#67B9A5",
-              "&:hover": { backgroundColor: "#E0BC58" },
-            }}
-          >
-            <Lightbulb sx={{ color: "#245045" }} />
-          </Fab>
+          <Tooltip placement="left" title="Initiatives">
+            <Fab
+              onClick={() => setSetShowEvents(false)}
+              sx={{
+                backgroundColor: "#67B9A5",
+                "&:hover": { backgroundColor: "#E0BC58" },
+              }}
+            >
+              <Lightbulb sx={{ color: "#245045" }} />
+            </Fab>
+          </Tooltip>
         </div>
         <div className="fab">
-          <Fab
-            onClick={() => setSetShowEvents(true)}
-            sx={{
-              backgroundColor: "#A669DF",
-              "&:hover": { backgroundColor: "#E0BC58" },
-            }}
-          >
-            <Today sx={{ color: "#3a2250" }} />
-          </Fab>
+          <Tooltip placement="right" title="Events">
+            <Fab
+              onClick={() => setSetShowEvents(true)}
+              sx={{
+                backgroundColor: "#A669DF",
+                "&:hover": { backgroundColor: "#E0BC58" },
+              }}
+            >
+              <Today sx={{ color: "#3a2250" }} />
+            </Fab>
+          </Tooltip>
         </div>
       </div>
       <div>
@@ -67,7 +71,9 @@ const Home = () => {
                     location={initiative.location}
                     volunteerData={initiative.followers}
                   />
-                  <b>title</b>
+                  <div className="top-padding">
+                    <b>title</b>
+                  </div>
                 </div>
               ))}
             </div>

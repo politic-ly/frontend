@@ -28,6 +28,7 @@ const Navigation = () => {
   };
 
   return (
+    <div>
     <div className="navigation">
       <NavLink to="/">
         <div className="navigation logo-container">
@@ -107,6 +108,8 @@ const Navigation = () => {
           </div>
         </li>
       </ul>
+    </div>
+    <hr></hr>
     </div>
   );
 };

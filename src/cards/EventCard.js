@@ -40,16 +40,16 @@ const EventCard = ({
   return (
     <div>
     <Card
-    className="initiativeCard"
+    className="eventCard"
     style={{
         background: `linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${img})`,
     }}
     >
     <CardActionArea onClick={() => setShowModal(true)}>
-        <div className="initiativeCard--title">
+        <div className="eventCard--title bottom-padding">
             <p><span>organizer name</span></p>
         </div>
-        <div className="initiativeCard--title">
+        <div className="eventCard--title">
             <h2>
             <span>Ur mom's house</span>
             </h2>
