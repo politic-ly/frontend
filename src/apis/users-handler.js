@@ -9,6 +9,14 @@ export function postNewUser(access_token) {
   return axios.post(`${URL}/${access_token}`);
 }
 
+export function postUserChanges(userId, infoData) {
+  return axios.put(URL + "/" + userId, infoData, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+}
+
 export function getUserById(id) {
   return axios.get(`${URL}/` + id);
 }

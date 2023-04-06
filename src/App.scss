@@ -1,6 +1,7 @@
 @import './styles/utilities/_variables.scss';
 @import './styles/components/Card.scss';
 @import './styles/components/Navigation.scss';
+@import './styles/pages/AccountPage.scss';
 @import './styles/pages/HomePage.scss';
 @import './styles/pages/ExplorePage.scss';
 @import './styles/pages/NewsPage.scss';
@@ -10,9 +11,13 @@
 @import "./styles/pages/Initiative.scss";
 
 body {
-  background-color: $background;
+  background-color: $background-1;
   font-family: "Inter", sans-serif;
   color: $text-standard;
+}
+
+#root {
+  height: 100vh;
 }
 
 h1,

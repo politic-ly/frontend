@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { AvatarGroup, Avatar, Card } from "@mui/material";
 import { Favorite, FavoriteBorderOutlined } from "@mui/icons-material";
-import { CardActionArea } from "@mui/material";
 import { Link } from "react-router-dom";
 import {
   addFavorite,
@@ -15,6 +14,7 @@ const InitiativeCard = ({
   title,
   subtitle,
   location = "",
+  type = "",
   volunteerData,
 }) => {
   // State objects for data
@@ -55,14 +55,14 @@ const InitiativeCard = ({
 
   return (
     <Card
-      className="initiativeCard"
+      className={`initiativeCard${type === "account" ? " accountType" : ""}`}
       style={{
         background: `linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${img})`,
       }}
     >
       <div className="initiativeCard--text">
-        <Link style={{ textDecoration: "none" }} to={"/initiative/" + id}>
-          <p className="initiativeCard--location">{location.toUpperCase()}</p>
+        <p className="initiativeCard--location">{location.toUpperCase()}</p>
+        <Link className="initiativeCard--textLink" to={"/initiative/" + id}>
           <div className="initiativeCard--title">
             <h2>
               <span>{title}</span>
@@ -73,41 +73,45 @@ const InitiativeCard = ({
           </div>
         </Link>
       </div>
-      <div className="initiativeCard--function">
-        {favorited ? (
-          <Favorite
-            className="initiativeCard--favorited"
-            onClick={(e) => {
-              e.stopPropagation();
-              toggleFavorite();
-            }}
-          />
-        ) : (
-          <FavoriteBorderOutlined
-            className="initiativeCard--favorited"
-            onClick={(e) => {
-              toggleFavorite();
-            }}
-          />
-        )}
-        <div className="initiativeCard--volunteers">
-          <p>{volunteerList.length} volunteers</p>
-          <div className="initiativeCard--volunteerList">
-            <AvatarGroup max={10}>
-              {volunteerList.map((vol, index) => {
-                return (
-                  <Avatar
-                    key={index}
-                    src={vol.profileImg}
-                    alt={vol.username}
-                    sx={{ width: 24, height: 24 }}
-                  />
-                );
-              })}
-            </AvatarGroup>
+      {type == "account" ? (
+        <></>
+      ) : (
+        <div className="initiativeCard--function">
+          {favorited ? (
+            <Favorite
+              className="initiativeCard--favorited"
+              onClick={(e) => {
+                e.stopPropagation();
+                toggleFavorite();
+              }}
+            />
+          ) : (
+            <FavoriteBorderOutlined
+              className="initiativeCard--favorited"
+              onClick={(e) => {
+                toggleFavorite();
+              }}
+            />
+          )}
+          <div className="initiativeCard--volunteers">
+            <p>{volunteerList.length} volunteers</p>
+            <div className="initiativeCard--volunteerList">
+              <AvatarGroup max={10}>
+                {volunteerList.map((vol, index) => {
+                  return (
+                    <Avatar
+                      key={index}
+                      src={vol.profileImg}
+                      alt={vol.username}
+                      sx={{ width: 24, height: 24 }}
+                    />
+                  );
+                })}
+              </AvatarGroup>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </Card>
   );
 };

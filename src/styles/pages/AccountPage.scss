@@ -1,0 +1,49 @@
+.accountPage {
+    &--title {
+        padding: 12px
+    }
+
+    &--content {
+        display: flex;
+        border-top: 3px $text-standard solid;
+    }
+
+    &--menu {
+        width: 25vw;
+        background: $background-2;
+        text-align: center;
+        border-right: solid black 3px;
+    }
+
+    &--profileInfo {
+        padding: 24px 12px;
+        height: 57.5vh;
+
+        h2, h3, p {
+            margin: 12px 
+        }
+    }
+
+    &--accountSettings {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    &--settingsField {
+        margin-top: 24px !important;
+    }
+
+    &--saveButton {
+        margin: 12px 0 !important;
+    }
+
+    &--profilePic {
+        height: auto;
+        width: auto;
+        max-width: 100%;
+        aspect-ratio: 1;
+        border-radius: 300px;
+        object-fit: cover;
+    }
+}

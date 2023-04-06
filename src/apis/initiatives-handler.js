@@ -21,6 +21,10 @@ export function postEvent(initiativeId, formData) {
   });
 }
 
+export function getInitiativesByUser(userId) {
+  return axios.get(URL + `/user/${userId}`)
+}
+
 export function getInitiativeById(id) {
   return axios.get(URL + "/" + id);
 }

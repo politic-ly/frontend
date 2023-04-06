@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { Button, TextField } from "@mui/material";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { postEvent } from "../apis/initiatives-handler";
-import { useNavigate } from "react-router-dom";
 
 const CreateEvent = () => {
   const navigate = useNavigate();
@@ -41,7 +40,6 @@ const CreateEvent = () => {
           <i>Events based on your interests</i>
         </p>
       </div>
-      <div></div>
       <div className="createEvent--formContainer">
         <form className="createEvent--requiredInfo page-wrapper">
           <TextField

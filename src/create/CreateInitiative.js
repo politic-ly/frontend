@@ -265,7 +265,7 @@ const CreateInitiative = () => {
         );
       case 3:
         return (
-          <div>
+          <div className="createInitiative--submissionMessage">
             <h1>
               {successfulSubmit
                 ? "Successfully Submitted!"

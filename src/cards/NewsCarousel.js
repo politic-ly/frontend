@@ -3,10 +3,9 @@ import NewsCard from "./NewsCard";
 import FeatureNewsCard from "./FeatureNewsCard";
 
 const NewsCarousel = (articleData) => {
-
   const getCurrentFeature = () => {
-    return articleData.articleData[articleData.currentFeatureIndex]
-  }
+    return articleData.articleData[articleData.currentFeatureIndex];
+  };
 
   // WIP: Carousel Functionality
   // const rotateFeatureForward = () => {
@@ -32,16 +31,18 @@ const NewsCarousel = (articleData) => {
 
   return (
     <div className="newsCarousel">
-      <FeatureNewsCard
-        headline={getCurrentFeature().title}
-        date={articleData.formatDate(getCurrentFeature().publishedAt)}
-        time={articleData.formatTime(getCurrentFeature().publishedAt)}
-        description={getCurrentFeature().description}
-        source={getCurrentFeature().author}
-        img={getCurrentFeature().urlToImage}
-        url={getCurrentFeature().url}
-        loading={articleData.loading}
-      />
+      {articleData.article && articleData.articleData.length() > 0 ? (
+        <FeatureNewsCard
+          headline={getCurrentFeature().title}
+          date={articleData.formatDate(getCurrentFeature().publishedAt)}
+          time={articleData.formatTime(getCurrentFeature().publishedAt)}
+          description={getCurrentFeature().description}
+          source={getCurrentFeature().author}
+          img={getCurrentFeature().urlToImage}
+          url={getCurrentFeature().url}
+          loading={articleData.loading}
+        />
+      ) : null}
       <div className="newsCarousel--standardCards">
         {articleData.carouselData.map((article, i) => {
           return (
