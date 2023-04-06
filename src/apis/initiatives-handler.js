@@ -40,3 +40,11 @@ export function getInitiativesByIds(ids) {
     },
   });
 }
+
+export function postAnnouncement(initiativeId, formData) {
+  return axios.post(URL + "/" + initiativeId + "/announcement/new", formData, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+}
