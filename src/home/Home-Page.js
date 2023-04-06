@@ -64,7 +64,7 @@ const Home = () => {
             location={initiative.location}
             volunteerData={initiative.followers}
           />
-          <b>title</b>
+          <div className="top-padding"><b>title</b></div>
         </div>))}
         </div>
       </div>
