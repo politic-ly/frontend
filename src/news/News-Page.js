@@ -98,7 +98,6 @@ const News = () => {
           <i>Major Headlines in Your Area</i>
         </p>
       </span>
-      {console.log("currentFeature uwu: ", articleData)}
       <div className="newsPage--wrapper">
         <NewsCarousel
           articleData={articleData}

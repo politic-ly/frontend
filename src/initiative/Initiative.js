@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
 import pic from "../assets/blurby-cat.jpg";
-import { Stack } from "@mui/material";
-import { Box } from "@mui/material";
-import { Paper } from "@mui/material";
+import {
+  Avatar,
+  AvatarGroup,
+  Box,
+  Breadcrumbs,
+  Link,
+  Paper,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { Breadcrumbs } from "@mui/material";
-import { Link } from "@mui/material";
-import { Typography } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import CampaignOutlinedIcon from "@mui/icons-material/CampaignOutlined";
-import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
-import { useParams } from "react-router-dom";
+import { Today } from "@mui/icons-material";
 import { format } from "date-fns";
 import {
   getInitiativeById,
@@ -63,8 +66,10 @@ function Initiative() {
   const user = localStorage.getItem("user");
   const user_id = JSON.parse(user)._id;
 
+  const [volunteerList, setVolunteerList] = useState([]);
   useEffect(() => {
     getData();
+    setVolunteerList(data.followers);
   }, []);
 
   return (
@@ -77,6 +82,7 @@ function Initiative() {
             }}
           />
         </NavLink>
+        {console.log("data: ", data)}
         <Breadcrumbs aria-label="breadcrumb">
           <Link underline="hover" color="inherit" href="/">
             Explore Page
@@ -86,7 +92,13 @@ function Initiative() {
       </div>
       <div className="page-wrapper flex-container">
         <div className="left-col">
-          <img src={pic} alt="initiative photo"></img>
+          <img
+            src={
+              data.images ? "http://localhost:5152" + "/" + data.images[0] : pic
+            }
+            alt="initiative photo"
+            className="initiative--img-container"
+          ></img>
           <span>
             <h2>
               <b>{data.title}</b>
@@ -95,7 +107,6 @@ function Initiative() {
               <i>{data.shortDescription}</i>
             </p>
             <p>{data.fullDescription}</p>
-            <p>Created: date Last Updated: date</p>
           </span>
         </div>
         <div className="right-col">
@@ -104,6 +115,24 @@ function Initiative() {
               <h2>
                 <b>Volunteers</b>
               </h2>
+              <div className="initiative--volunteerList">
+                <AvatarGroup max={10}>
+                  {volunteerList && volunteerList.length > 0 ? (
+                    volunteerList.map((vol, index) => {
+                      return (
+                        <Avatar
+                          key={index}
+                          src={vol.profileImg}
+                          alt={vol.username}
+                          sx={{ width: 24, height: 24 }}
+                        />
+                      );
+                    })
+                  ) : (
+                    <></>
+                  )}
+                </AvatarGroup>
+              </div>
               <NavLink to="/announcements" className="view-all">
                 view all
               </NavLink>
@@ -182,7 +211,7 @@ function Initiative() {
                         <Item2>
                           <div className="card-content">
                             <div className="card-icon">
-                              <CalendarTodayOutlinedIcon
+                              <Today
                                 fontSize="large"
                                 style={{ color: "#906F9B" }}
                               />

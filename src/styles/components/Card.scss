@@ -75,6 +75,13 @@
         }
     }
 
+    &--subtitle {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 315px;
+    }
+
     &--eventlocation {
         font-size: 14px;
         margin: 8px 0;

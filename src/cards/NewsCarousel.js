@@ -31,7 +31,8 @@ const NewsCarousel = (articleData) => {
 
   return (
     <div className="newsCarousel">
-      {articleData.article && articleData.articleData.length() > 0 ? (
+      {console.log(articleData)}
+      {articleData.articleData && articleData.articleData.length > 0 ? (
         <FeatureNewsCard
           headline={getCurrentFeature().title}
           date={articleData.formatDate(getCurrentFeature().publishedAt)}

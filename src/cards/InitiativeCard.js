@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import {
   addFavorite,
   getFavoriteInitiatives,
+  getUserById,
   removeFavorite,
 } from "../apis/users-handler";
 
@@ -50,6 +51,7 @@ const InitiativeCard = ({
     }
   };
   useEffect(() => {
+    volunteerData.map((volunteer) => getUserById(volunteer).then());
     setVolunteerList(volunteerData);
   }, [volunteerData]);
 
@@ -67,7 +69,7 @@ const InitiativeCard = ({
             <h2>
               <span>{title}</span>
             </h2>
-            <p>
+            <p className="initiativeCard--subtitle">
               <span>{subtitle}</span>
             </p>
           </div>

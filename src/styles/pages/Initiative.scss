@@ -75,3 +75,12 @@
   width: 50%;
   padding-left: 5px;
 }
+
+.initiative {
+  &--img-container {
+    max-height: 28vh;
+    width: 100%;
+    object-fit: cover;
+    padding-bottom: 12px;
+  }
+}

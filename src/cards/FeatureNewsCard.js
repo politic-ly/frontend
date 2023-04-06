@@ -7,7 +7,7 @@ const FeatureNewsCard = ({
   time,
   img,
   source,
-  loading
+  loading,
 }) => {
   return (
     <div className="featureNewsCard">
@@ -18,6 +18,7 @@ const FeatureNewsCard = ({
           background: `linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${img})`,
         }}
       >
+        {console.log("Butts")}
         {loading ? (
           <CircularProgress color="secondary" />
         ) : (
@@ -43,4 +44,4 @@ const FeatureNewsCard = ({
   );
 };
 
-export default FeatureNewsCard
+export default FeatureNewsCard;

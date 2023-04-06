@@ -11,11 +11,11 @@ import {
   TextField,
 } from "@mui/material";
 import { AccountCircle, Lightbulb, Logout } from "@mui/icons-material";
-import pic from "../assets/gimpy.PNG";
 import { getUserById } from "../apis/users-handler";
 import { getInitiativesByUser } from "../apis/initiatives-handler";
 import { postUserChanges } from "../apis/users-handler";
 import InitiativeCard from "../cards/InitiativeCard";
+import pic from "../assets/gimpy.PNG";
 
 function Account() {
   const user = localStorage.getItem("user");
@@ -69,7 +69,12 @@ function Account() {
       <div className="accountPage--content">
         <div className="accountPage--menu">
           <div className="accountPage--profileInfo">
-            <img src={pic} className="accountPage--profilePic" />
+              {console.log(userInfo.profileImg)}
+            <img
+              src={userInfo.profileImg ? userInfo.profileImg : pic}
+              className="accountPage--profilePic"
+              alt={userInfo.fullName}
+            />
             <h2>{userInfo.fullName}</h2>
             <p>
               <u>{userInfo.email}</u>
@@ -115,8 +120,11 @@ function Account() {
                 {myInitiativeData.map((initiative, i) => {
                   return (
                     <InitiativeCard
-                      // img={`../assets/${initiative.images[0]}`}
-                      img={pic}
+                      img={
+                        initiative.images
+                          ? "http://localhost:5152" + "/" + initiative.images[0]
+                          : pic
+                      }
                       key={i}
                       title={initiative.title}
                       subtitle={initiative.shortDescription}
