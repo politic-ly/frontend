@@ -1,5 +1,8 @@
 .navigation {
-  padding: 12px;
+  padding-top: 10px;
+  padding-bottom: 8px;
+  padding-left: 15px;
+  padding-right: 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -28,7 +31,7 @@
   &.politicly-brand {
     font-size: 1.17rem;
     font-weight: 100;
-    letter-spacing: .6rem;
+    letter-spacing: 0.6rem;
   }
 
   &.account-img {
@@ -39,7 +42,7 @@
 
 li a {
   display: flex;
-  color: #3A3E41;
+  color: #3a3e41;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
