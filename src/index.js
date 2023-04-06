@@ -14,6 +14,7 @@ import CreateInitiative from "./create/CreateInitiative";
 import Initiative from "./initiative/initiative";
 import Announcements from "./announcements/announcements";
 import Events from "./events/events";
+import CreateEvent from "./create/CreateEvent";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -27,10 +28,14 @@ root.render(
             <Route path="/account" element={<Account />} />
             <Route path="/news" element={<News />} />
             <Route path="/favorites" element={<Favorites />} />
-            <Route path="/initiative/:id" element={<Initiative />} />
+            <Route path="/initiative/:id" element={<Initiative />}></Route>
             <Route path="/announcements" element={<Announcements />} />
             <Route path="/events" element={<Events />} />
             <Route path="/initiative/new" element={<CreateInitiative />} />
+            <Route
+              path="/initiative/:id/events/new"
+              element={<CreateEvent />}
+            />
           </Route>
         </Routes>
       </BrowserRouter>
