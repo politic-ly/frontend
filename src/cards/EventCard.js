@@ -46,17 +46,16 @@ const EventCard = ({
     }}
     >
     <CardActionArea onClick={() => setShowModal(true)}>
-        <div className="initiativeCard--text">
-        <p className="initiativeCard--eventlocation">
-        <span>{location.toUpperCase()}</span></p>
+        <div className="initiativeCard--title">
+            <p><span>organizer name</span></p>
+        </div>
         <div className="initiativeCard--title">
             <h2>
-            <span>{title}</span>
+            <span>Ur mom's house</span>
             </h2>
             <p>
-            <span>{subtitle}</span>
+            <span>Friday, February 11th @ 9:30 AM</span>
             </p>
-        </div>
         </div>
     </CardActionArea>
     </Card>

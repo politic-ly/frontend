@@ -50,8 +50,10 @@ const Home = () => {
         <div>
         {showEvents
         ? <div>
-        <b>Events</b>
-        <div className="explore-wrapper">
+        <div align="center" className="title">
+          <h2>Explore Events</h2>
+        </div>
+        <div className="explorefave-wrapper">
         {data.map((initiative, i) => (
         <div key={i}>
           <EventCard
@@ -62,12 +64,15 @@ const Home = () => {
             location={initiative.location}
             volunteerData={initiative.followers}
           />
+          <b>title</b>
         </div>))}
         </div>
       </div>
         : <div>
-        <b>Initiatives</b>
-        <div className="explore-wrapper">
+        <div align="center" className="title">
+          <h2>Explore Initiatives</h2>
+        </div>
+        <div className="exploreinit-wrapper">
         {data.map((initiative, i) => (
         <div key={i}>
           <NavLink to='/initiative'>
