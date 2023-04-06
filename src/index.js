@@ -12,7 +12,7 @@ import News from "./news/News-Page";
 import Favorites from "./favorites/Favorites-Page";
 import CreateInitiative from "./create/CreateInitiative";
 import Initiative from "./initiative/initiative";
-import Announcements from "./announcements/announcements";
+import Announcements from "./announcements/Announcements";
 import Events from "./events/events";
 import CreateEvent from "./create/CreateEvent";
 import CreateAnnouncement from "./create/CreateAnnouncement";
