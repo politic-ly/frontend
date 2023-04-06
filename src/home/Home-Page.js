@@ -4,6 +4,7 @@ import { Card } from '@mui/material';
 import { CardActionArea } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import InitiativeCard from "../cards/InitiativeCard";
+import EventCard from "../cards/EventCard";
 import { useEffect, useState } from 'react';
 import pic from "../assets/blurby-cat.jpg";
 import axios from 'axios';
@@ -12,9 +13,7 @@ import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined
 import RocketLaunchOutlinedIcon from '@mui/icons-material/RocketLaunchOutlined';
 
 const Home = () => {
-  const explores = 4;
-  const initiatives = 6;
-  const news = 6;
+  const [showEvents, setSetShowEvents] = useState(false);
 
   const [data,setData]=useState([]);
   const getData=()=>{
@@ -34,39 +33,61 @@ const Home = () => {
       <div className="page-wrapper">    
         <div className="fab-container">
           <div className="fab">
-          <Fab sx={{ backgroundColor: "#67b9a5",
-          "&:hover": { backgroundColor: "#e0bc58" },
+          <Fab onClick={()=> setSetShowEvents(false)} sx={{ backgroundColor: "#67B9A5",
+          "&:hover": { backgroundColor: "#E0BC58" },
             }}>
             <RocketLaunchOutlinedIcon sx={{ color: "#245045"}}/>
           </Fab>
           </div>
           <div className="fab">
-          <NavLink to='/' className="back-arrow">
-          <Fab sx={{ backgroundColor: "#a669df",
-          "&:hover": { backgroundColor: "#e0bc58" },
+          <Fab onClick={()=> setSetShowEvents(true)} sx={{ backgroundColor: "#A669DF",
+          "&:hover": { backgroundColor: "#E0BC58" },
             }}>
             <CalendarTodayOutlinedIcon sx={{ color: "#3a2250"}}/>
           </Fab>
-          </NavLink>
           </div>
         </div>
         <div>
-          <b>Explore What is Going On in Your Community</b>
-          <div className="explore-wrapper">
-          {data.map((initiative, i) => (
-          <div key={i}>
-            <NavLink to='/initiative'>
-            <InitiativeCard
-              // img={`../assets/${initiative.images[0]}`}
-              img={pic}
-              title={initiative.title}
-              subtitle={initiative.summary}
-              location={initiative.location}
-              volunteerData={initiative.followers}
-            />
-            </NavLink>
-          </div>))}
-          </div>
+        {showEvents
+        ? <div>
+        <div align="center" className="title">
+          <h2>Explore Events</h2>
+        </div>
+        <div className="explorefave-wrapper">
+        {data.map((initiative, i) => (
+        <div key={i}>
+          <EventCard
+            // img={`../assets/${initiative.images[0]}`}
+            img={pic}
+            title={initiative.title}
+            subtitle={initiative.summary}
+            location={initiative.location}
+            volunteerData={initiative.followers}
+          />
+          <b>title</b>
+        </div>))}
+        </div>
+      </div>
+        : <div>
+        <div align="center" className="title">
+          <h2>Explore Initiatives</h2>
+        </div>
+        <div className="exploreinit-wrapper">
+        {data.map((initiative, i) => (
+        <div key={i}>
+          <NavLink to='/initiative'>
+          <InitiativeCard
+            // img={`../assets/${initiative.images[0]}`}
+            img={pic}
+            title={initiative.title}
+            subtitle={initiative.summary}
+            location={initiative.location}
+            volunteerData={initiative.followers}
+          />
+          </NavLink>
+        </div>))}
+        </div>
+      </div>}
         </div>
       </div>
     );
