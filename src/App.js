@@ -26,18 +26,12 @@ const App = () => {
         .catch((err) => console.log(err));
     }
   }, [user]);
-  const logOut = () => {
-    googleLogout();
-    localStorage.removeItem("user");
-    setProfile(null);
-  };
 
   return (
     <div>
       {profile || localStorage.getItem("user") ? (
         <>
           <Navigation></Navigation>
-          <button onClick={logOut}>Log out</button>
           <Outlet context={{ profile }}></Outlet>
         </>
       ) : (

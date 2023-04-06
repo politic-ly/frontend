@@ -10,7 +10,7 @@ export function postNewUser(access_token) {
 }
 
 export function postUserChanges(userId, infoData) {
-  return axios.post(URL + "/" + userId, infoData, {
+  return axios.put(URL + "/" + userId, infoData, {
     headers: {
       "Content-Type": "application/json",
     },

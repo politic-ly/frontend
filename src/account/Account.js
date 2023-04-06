@@ -43,22 +43,10 @@ function Account() {
     location: "",
   });
 
-  const handleFirstNameChange = (e) =>
+  const handleUserInfoChange = (e) =>
     setAllAccountInfo({
       ...allAccountInfo,
-      [e.target.firstName]: e.target.value,
-    });
-  const handleLastNameChange = (e) => {
-    console.log(e);
-    setAllAccountInfo({
-      ...allAccountInfo,
-      [e.target.lastName]: e.target.value,
-    });
-  };
-  const handleLocationChange = (e) =>
-    setAllAccountInfo({
-      ...allAccountInfo,
-      [e.target.location]: e.target.value,
+      [e.target.name]: e.target.value,
     });
 
   const handleEditAccountSettings = (e) => {
@@ -67,6 +55,7 @@ function Account() {
       fullName: allAccountInfo.firstName + " " + allAccountInfo.lastName,
       location: allAccountInfo.location,
     };
+    console.log(infoData);
     postUserChanges(user_id, infoData).then((res) => {
       if (res.status === 200) {
         navigate(`/account`);
@@ -149,26 +138,26 @@ function Account() {
                 <TextField
                   className="accountPage--settingsField"
                   label="First Name"
-                  name="First Name"
+                  name="firstName"
                   color="secondary"
                   defaultValue={userInfo.fullName.split(" ")[0]}
-                  onChange={handleFirstNameChange}
+                  onChange={handleUserInfoChange}
                 ></TextField>
                 <TextField
                   className="accountPage--settingsField"
                   label="Last Name"
-                  name="Last Name"
+                  name="lastName"
                   color="secondary"
                   defaultValue={userInfo.fullName.split(" ")[1]}
-                  onChange={handleLastNameChange}
+                  onChange={handleUserInfoChange}
                 ></TextField>
                 <TextField
                   className="accountPage--settingsField"
                   label="Location"
-                  name="Location"
+                  name="location"
                   color="secondary"
                   defaultValue={userInfo.location}
-                  onChange={handleLocationChange}
+                  onChange={handleUserInfoChange}
                 ></TextField>
                 <Button
                   className="accountPage--saveButton"
