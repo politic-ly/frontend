@@ -1,6 +1,6 @@
 import React from 'react';
 import InitiativesBlock from './Blocks/Initiatives-Block';
-import { Card } from '@mui/material';
+import { Card, Tooltip } from '@mui/material';
 import { CardActionArea } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import InitiativeCard from "../cards/InitiativeCard";
@@ -33,18 +33,22 @@ const Home = () => {
       <div className="page-wrapper">    
         <div className="fab-container">
           <div className="fab">
+          <Tooltip placement= "left" title="Initiatives">
           <Fab onClick={()=> setSetShowEvents(false)} sx={{ backgroundColor: "#67B9A5",
           "&:hover": { backgroundColor: "#E0BC58" },
             }}>
             <RocketLaunchOutlinedIcon sx={{ color: "#245045"}}/>
           </Fab>
+          </Tooltip>
           </div>
           <div className="fab">
+          <Tooltip placement= "right" title="Events">
           <Fab onClick={()=> setSetShowEvents(true)} sx={{ backgroundColor: "#A669DF",
           "&:hover": { backgroundColor: "#E0BC58" },
             }}>
             <CalendarTodayOutlinedIcon sx={{ color: "#3a2250"}}/>
           </Fab>
+          </Tooltip>
           </div>
         </div>
         <div>
