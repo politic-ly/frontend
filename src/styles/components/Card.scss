@@ -85,3 +85,50 @@
 .event-contact {
   padding-right: 70px;
 }
+
+.bottom-padding {
+  padding-bottom: 18px;
+}
+
+.eventCard {
+  height: 110px;
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &--text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &--title {
+    h2 {
+      font-size: 18px;
+      margin: 8px 0;
+    }
+    p {
+      font-size: 12px;
+      margin: 8px 0;
+    }
+    h2 span,
+    p span {
+      background-color: white;
+      padding: 2px 4px;
+    }
+  }
+
+  &--eventlocation {
+    font-size: 14px;
+    margin: 8px 0;
+    span {
+      background-color: white;
+      padding: 2px 4px;
+    }
+  }
+}

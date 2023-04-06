@@ -43,16 +43,19 @@ const Home = () => {
             <RocketLaunchOutlinedIcon sx={{ color: "#245045" }} />
           </Fab>
         </div>
-        <div className="fab">
-          <Fab
-            onClick={() => setSetShowEvents(true)}
-            sx={{
-              backgroundColor: "#A669DF",
-              "&:hover": { backgroundColor: "#E0BC58" },
-            }}
-          >
-            <CalendarTodayOutlinedIcon sx={{ color: "#3a2250" }} />
-          </Fab>
+        <div className="explorefave-wrapper">
+        {data.map((initiative, i) => (
+        <div key={i}>
+          <EventCard
+            // img={`../assets/${initiative.images[0]}`}
+            img={pic}
+            title={initiative.title}
+            subtitle={initiative.summary}
+            location={initiative.location}
+            volunteerData={initiative.followers}
+          />
+          <div className="top-padding"><b>title</b></div>
+        </div>))}
         </div>
       </div>
       <div>
