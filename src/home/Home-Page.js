@@ -1,16 +1,13 @@
-import React from "react";
-import InitiativesBlock from "./Blocks/Initiatives-Block";
-import { Card } from "@mui/material";
-import { CardActionArea } from "@mui/material";
-import { NavLink } from "react-router-dom";
+
+import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import { Card, CardActionArea, Fab, Tooltip } from '@mui/material;
+import InitiativesBlock from './Blocks/Initiatives-Block';
 import InitiativeCard from "../cards/InitiativeCard";
 import EventCard from "../cards/EventCard";
-import { useEffect, useState } from "react";
 import pic from "../assets/blurby-cat.jpg";
-import axios from "axios";
-import { Fab } from "@mui/material";
-import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
-import RocketLaunchOutlinedIcon from "@mui/icons-material/RocketLaunchOutlined";
+import axios from "axios
+import { Lightbulb, Today, } from "@mui/icons-material";
 
 const Home = () => {
   const [showEvents, setSetShowEvents] = useState(false);
@@ -28,20 +25,34 @@ const Home = () => {
   };
   useEffect(() => {
     getData();
-  }, []);
-  return (
-    <div className="page-wrapper">
-      <div className="fab-container">
-        <div className="fab">
-          <Fab
-            onClick={() => setSetShowEvents(false)}
-            sx={{
-              backgroundColor: "#67B9A5",
-              "&:hover": { backgroundColor: "#E0BC58" },
-            }}
-          >
-            <RocketLaunchOutlinedIcon sx={{ color: "#245045" }} />
+  },[])
+    return (
+      <div className="page-wrapper">    
+        <div className="fab-container">
+          <div className="fab">
+          <Tooltip placement= "left" title="Initiatives">
+          <Fab onClick={()=> setSetShowEvents(false)} sx={{ backgroundColor: "#67B9A5",
+          "&:hover": { backgroundColor: "#E0BC58" },
+            }}>
+            <Lightbulb sx={{ color: "#245045"}}/>
           </Fab>
+          </Tooltip>
+          </div>
+          <div className="fab">
+          <Tooltip placement= "right" title="Events">
+          <Fab onClick={()=> setSetShowEvents(true)} sx={{ backgroundColor: "#A669DF",
+          "&:hover": { backgroundColor: "#E0BC58" },
+            }}>
+            <Today sx={{ color: "#3a2250"}}/>
+          </Fab>
+          </Tooltip>
+          </div>
+        </div>
+        <div>
+        {showEvents
+        ? <div>
+        <div align="center" className="title">
+          <h2>Explore Events</h2>
         </div>
         <div className="fab">
           <Fab
