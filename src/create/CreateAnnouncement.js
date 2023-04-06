@@ -1,47 +1,43 @@
 import React, { useState } from "react";
 import { Button, TextField } from "@mui/material";
 import { useParams } from "react-router-dom";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { postEvent } from "../apis/initiatives-handler";
+import { postAnnouncement } from "../apis/initiatives-handler";
+import { useNavigate } from "react-router-dom";
 
-const CreateEvent = () => {
+const CreateAnnouncement = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [requiredInfo, setRequiredInfo] = useState({
     title: "",
     description: "",
-    date: "",
   });
   const handleRequiredInfoChange = (e) =>
     setRequiredInfo({ ...requiredInfo, [e.target.name]: e.target.value });
-  const handleDateChange = (date) => setRequiredInfo({ ...requiredInfo, date });
 
   const handleRequiredInfoSubmit = (e) => {
     e.preventDefault();
     const formData = {
       title: requiredInfo.title,
       description: requiredInfo.description,
-      date: requiredInfo.date,
     };
-    postEvent(id, formData).then((res) => {
-      console.log(res);
+    postAnnouncement(id, formData).then((res) => {
+      if (res.status === 200) navigate(`/initiative/${id}`);
     });
   };
 
   return (
-    <div className="createEvent">
-      <div className="createEvent--banner">
+    <div className="createAnnouncement">
+      <div className="createAnnouncement--banner">
         <h2>Create an Event</h2>
         <p className="page-subtitle">
           <i>Events based on your interests</i>
         </p>
       </div>
       <div></div>
-      <div className="createEvent--formContainer">
-        <form className="createEvent--requiredInfo page-wrapper">
+      <div className="createAnnouncement--formContainer">
+        <form className="createAnnouncement--requiredInfo page-wrapper">
           <TextField
-            className="createEvent--textInput"
+            className="createAnnouncement--textInput"
             label="Title"
             name="title"
             color="secondary"
@@ -49,18 +45,8 @@ const CreateEvent = () => {
             onChange={handleRequiredInfoChange}
           />
 
-          <LocalizationProvider name="date" dateAdapter={AdapterDayjs}>
-            <DatePicker
-              className="createEvent--textInput"
-              color="secondry"
-              name="date"
-              value={requiredInfo.date}
-              onChange={handleDateChange}
-            />
-          </LocalizationProvider>
-
           <TextField
-            className="createEvent--textInput"
+            className="createAnnouncement--textInput"
             label="Description"
             color="secondary"
             multiline
@@ -72,7 +58,7 @@ const CreateEvent = () => {
           <Button
             variant="contained"
             color="secondary"
-            className="createEvent--submitButton"
+            className="createAnnouncement--submitButton"
             onClick={handleRequiredInfoSubmit}
           >
             Create Event
@@ -83,4 +69,4 @@ const CreateEvent = () => {
   );
 };
 
-export default CreateEvent;
+export default CreateAnnouncement;
