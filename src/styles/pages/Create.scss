@@ -94,3 +94,31 @@
         width: 20%;
     }
 }
+
+
+.createAnnouncement{
+    &--formContainer {
+        padding: 8px 64px;
+        min-height: 225px;
+    }
+
+    &--banner {
+        position: relative;
+        padding: 12px 0 12px 12px;
+        margin-bottom: 24px;
+        left: 0;
+        background: $brand-03;
+    }
+
+    &--textInput {
+        margin-bottom: 12px !important;
+    }
+    
+    &--requiredInfo {
+        display: flex;
+        flex-direction: column;
+    }
+    &--submitButton{
+        width: 20%;
+    }
+}

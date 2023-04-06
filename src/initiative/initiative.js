@@ -52,6 +52,14 @@ function Initiative() {
       });
   };
 
+  const formatDate = (date) => {
+    var dateObj = new Date(date);
+    if (dateObj instanceof Date && !isNaN(dateObj.valueOf())) {
+      return format(dateObj, "dd/MM/yyyy");
+    } else {
+      return "TBD";
+    }
+  };
   const user = localStorage.getItem("user");
   const user_id = JSON.parse(user)._id;
 
@@ -106,13 +114,21 @@ function Initiative() {
               <h2>
                 <b>Recent Announcements</b>
               </h2>
+              {isOwner ? (
+                <NavLink
+                  to={`/initiative/${id}/announcements/new`}
+                  className="view-all"
+                >
+                  Create New
+                </NavLink>
+              ) : null}
               <NavLink to="/announcements" className="view-all">
                 view all
               </NavLink>
             </div>
             <Box sx={{ width: "100%" }}>
               <Stack spacing={2}>
-                {data.announcement && data.announcements.length > 0 ? (
+                {data.announcements && data.announcements.length > 0 ? (
                   data.announcements.map(
                     (announcement, index) =>
                       index < 3 && (
@@ -173,9 +189,7 @@ function Initiative() {
                             </div>
                             <div className="card-text">
                               <b>{event.title}</b>
-                              <p>
-                                {format(new Date(event.date), "MM/dd/yyyy")}
-                              </p>
+                              <p>{formatDate(event.date)}</p>
                             </div>
                           </div>
                         </Item2>

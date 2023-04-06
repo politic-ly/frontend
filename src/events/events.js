@@ -1,15 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import pic from "../assets/blurby-cat.jpg";
-import axios from 'axios';
-import { Stack } from '@mui/material';
-import { Box } from '@mui/material';
-import { Paper } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import { Breadcrumbs } from '@mui/material';
-import { Link } from '@mui/material';
-import { Typography } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { NavLink } from 'react-router-dom';
+import axios from 'axios';
+import { Box, Breadcrumbs, Link, Paper, Stack, Typography } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
 
 const Item = styled(Paper)(({ theme }) => ({

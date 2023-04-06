@@ -15,6 +15,7 @@ import Initiative from "./initiative/Initiative";
 import Announcements from "./announcements/Announcements";
 import Events from "./events/events";
 import CreateEvent from "./create/CreateEvent";
+import CreateAnnouncement from "./create/CreateAnnouncement";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -35,6 +36,10 @@ root.render(
             <Route
               path="/initiative/:id/events/new"
               element={<CreateEvent />}
+            />
+            <Route
+              path="/initiative/:id/announcements/new"
+              element={<CreateAnnouncement />}
             />
           </Route>
         </Routes>
