@@ -1,26 +1,78 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import {
+  Button,
+  FormControl,
   List,
   ListItem,
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  TextField,
 } from "@mui/material";
 import { AccountCircle, Lightbulb, Logout } from "@mui/icons-material";
 import pic from "../assets/gimpy.PNG";
+import { getUserById } from "../apis/users-handler";
 import { getInitiativesByUser } from "../apis/initiatives-handler";
+import { postUserChanges } from "../apis/users-handler";
 import InitiativeCard from "../cards/InitiativeCard";
-
 
 function Account() {
   const user = localStorage.getItem("user");
   const user_id = JSON.parse(user)._id;
-
-  const [myInitiativeData, setMyInitiativeData] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    getInitiativesByUser(user_id).then((res) => setMyInitiativeData(res.data))
-  },[])
+    getUserById(user_id).then((res) => {
+      setUserInfo(res.data);
+      setAllAccountInfo({
+        firstName: res.data.fullName.split(" ")[0],
+        lastName: res.data.fullName.split(" ")[1],
+        location: res.data.location,
+      });
+    });
+    getInitiativesByUser(user_id).then((res) => setMyInitiativeData(res.data));
+  }, []);
+
+  const [userInfo, setUserInfo] = useState("");
+  const [myInitiativeData, setMyInitiativeData] = useState([]);
+  const [currentTab, setCurrentTab] = useState(0);
+  const [allAccountInfo, setAllAccountInfo] = useState({
+    firstName: "",
+    lastName: "",
+    location: "",
+  });
+
+  const handleFirstNameChange = (e) =>
+    setAllAccountInfo({
+      ...allAccountInfo,
+      [e.target.firstName]: e.target.value,
+    });
+  const handleLastNameChange = (e) => {
+    console.log(e);
+    setAllAccountInfo({
+      ...allAccountInfo,
+      [e.target.lastName]: e.target.value,
+    });
+  };
+  const handleLocationChange = (e) =>
+    setAllAccountInfo({
+      ...allAccountInfo,
+      [e.target.location]: e.target.value,
+    });
+
+  const handleEditAccountSettings = (e) => {
+    e.preventDefault();
+    const infoData = {
+      fullName: allAccountInfo.firstName + " " + allAccountInfo.lastName,
+      location: allAccountInfo.location,
+    };
+    postUserChanges(user_id, infoData).then((res) => {
+      if (res.status === 200) {
+        navigate(`/account`);
+      }
+    });
+  };
 
   return (
     <div className="accountPage">
@@ -29,18 +81,17 @@ function Account() {
         <div className="accountPage--menu">
           <div className="accountPage--profileInfo">
             <img src={pic} className="accountPage--profilePic" />
-            <h2>FirstName LastName</h2>
-            <h3>@username</h3>
+            <h2>{userInfo.fullName}</h2>
             <p>
-              <u>myemail@gmail.com</u>
+              <u>{userInfo.email}</u>
             </p>
-            <p>Location, LO</p>
+            <p>{userInfo.location}</p>
           </div>
 
           <div className="accountPage--actions">
             <List>
               <ListItem disablePadding>
-                <ListItemButton>
+                <ListItemButton onClick={() => setCurrentTab(1)}>
                   <ListItemIcon>
                     <AccountCircle />
                   </ListItemIcon>
@@ -48,7 +99,7 @@ function Account() {
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
-                <ListItemButton>
+                <ListItemButton onClick={() => setCurrentTab(0)}>
                   <ListItemIcon>
                     <Lightbulb />
                   </ListItemIcon>
@@ -59,6 +110,7 @@ function Account() {
                 <ListItemButton>
                   <ListItemIcon>
                     <Logout />
+                    {/* {console.log(userInfo.fullName.split(" "))} */}
                   </ListItemIcon>
                   <ListItemText primary="Logout" />
                 </ListItemButton>
@@ -67,22 +119,68 @@ function Account() {
           </div>
         </div>
         <div className="accountPage--display page-wrapper">
-          <h3>My Initiatives</h3>
-          <div>
-            {myInitiativeData.map((initiative) => {
-              return (
-                <InitiativeCard
-                  // img={`../assets/${initiative.images[0]}`}
-                  img={pic}
-                  title={initiative.title}
-                  subtitle={initiative.shortDescription}
-                  location={initiative.location}
-                  volunteerData={initiative.followers}
-                  type="account"
-                />
-              )
-            })}
-          </div>
+          {currentTab === 0 ? (
+            <>
+              <h3>My Initiatives</h3>
+              <div>
+                {myInitiativeData.map((initiative, i) => {
+                  return (
+                    <InitiativeCard
+                      // img={`../assets/${initiative.images[0]}`}
+                      img={pic}
+                      key={i}
+                      title={initiative.title}
+                      subtitle={initiative.shortDescription}
+                      location={initiative.location}
+                      volunteerData={initiative.followers}
+                      type="account"
+                    />
+                  );
+                })}
+              </div>
+            </>
+          ) : (
+            <>
+              <h3>Account Settings</h3>
+              <FormControl
+                className="accountPage--accountSettings"
+                onSubmit={(e) => console.log(e)}
+              >
+                <TextField
+                  className="accountPage--settingsField"
+                  label="First Name"
+                  name="First Name"
+                  color="secondary"
+                  defaultValue={userInfo.fullName.split(" ")[0]}
+                  onChange={handleFirstNameChange}
+                ></TextField>
+                <TextField
+                  className="accountPage--settingsField"
+                  label="Last Name"
+                  name="Last Name"
+                  color="secondary"
+                  defaultValue={userInfo.fullName.split(" ")[1]}
+                  onChange={handleLastNameChange}
+                ></TextField>
+                <TextField
+                  className="accountPage--settingsField"
+                  label="Location"
+                  name="Location"
+                  color="secondary"
+                  defaultValue={userInfo.location}
+                  onChange={handleLocationChange}
+                ></TextField>
+                <Button
+                  className="accountPage--saveButton"
+                  variant="contained"
+                  color="secondary"
+                  onClick={handleEditAccountSettings}
+                >
+                  Save
+                </Button>
+              </FormControl>
+            </>
+          )}
         </div>
       </div>
     </div>

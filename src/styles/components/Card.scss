@@ -8,8 +8,9 @@
         cursor: pointer;
     }
 
-    .accountType {
+    &.accountType {
         height: 90px;
+        margin-top: 12px;
     }
 
     &--text {
@@ -52,23 +53,45 @@
         justify-content: space-between;
     }
 
-    &--location, &--volunteers {
+    &--location,
+    &--volunteers {
         font-size: 14px;
         color: $background-1;
     }
 
     &--title {
-        h2 { 
+        h2 {
             font-size: 18px;
-            margin: 8px 0; 
+            margin: 8px 0;
         }
-        p { 
+        p {
             font-size: 12px;
-            margin: 8px 0; 
+            margin: 8px 0;
         }
-        h2 span, p span {
+        h2 span,
+        p span {
             background-color: white;
             padding: 2px 4px;
         }
     }
+
+    &--eventlocation {
+        font-size: 14px;
+        margin: 8px 0;
+        span {
+            background-color: white;
+            padding: 2px 4px;
+        }
+    }
+}
+
+.user-display {
+    display: flex;
+    padding-top: 10px;
+    justify-content: space-between;
+    padding-bottom: 7px;
+}
+
+.event-contact {
+    padding-right: 70px;
 }

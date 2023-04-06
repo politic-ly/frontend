@@ -1,18 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import axios from "axios";
-import { Card } from "@mui/material";
-import { CardActionArea } from "@mui/material";
-import InitiativeCard from "../cards/InitiativeCard";
-import InitiativesBlock from "./Blocks/Initiatives-Block";
-import pic from "../assets/blurby-cat.jpg";
 import { Fab } from "@mui/material";
 import { Today, Lightbulb } from "@mui/icons-material";
+import axios from "axios";
+import InitiativeCard from "../cards/InitiativeCard";
+import EventCard from "../cards/EventCard";
+import pic from "../assets/blurby-cat.jpg";
 
 const Home = () => {
-  const explores = 4;
-  const initiatives = 6;
-  const news = 6;
+  const [showEvents, setSetShowEvents] = useState(false);
 
   const [data, setData] = useState([]);
   const getData = () => {
@@ -33,55 +29,72 @@ const Home = () => {
       <div className="fab-container">
         <div className="fab">
           <Fab
+            onClick={() => setSetShowEvents(false)}
             sx={{
-              backgroundColor: "#67b9a5",
-              "&:hover": { backgroundColor: "#e0bc58" },
+              backgroundColor: "#67B9A5",
+              "&:hover": { backgroundColor: "#E0BC58" },
             }}
           >
-            <Lightbulb
-              sx={{
-                color: "#245045",
-                "&:hover": { color: "#79611F" },
-              }}
-            />
+            <Lightbulb sx={{ color: "#245045" }} />
           </Fab>
         </div>
         <div className="fab">
-          <NavLink to="/" className="back-arrow">
-            <Fab
-              sx={{
-                backgroundColor: "#a669df",
-                "&:hover": { backgroundColor: "#e0bc58" },
-              }}
-            >
-              <Today
-                sx={{
-                  color: "#3a2250",
-                  "&:hover": { color: "#79611F" },
-                }}
-              />
-            </Fab>
-          </NavLink>
+          <Fab
+            onClick={() => setSetShowEvents(true)}
+            sx={{
+              backgroundColor: "#A669DF",
+              "&:hover": { backgroundColor: "#E0BC58" },
+            }}
+          >
+            <Today sx={{ color: "#3a2250" }} />
+          </Fab>
         </div>
       </div>
       <div>
-        <b>Explore What is Going On in Your Community</b>
-        <div className="explore-wrapper">
-          {data.map((initiative, i) => (
-            <div key={i}>
-              {/* <NavLink to="/initiative"> */}
-                <InitiativeCard
-                  // img={`../assets/${initiative.images[0]}`}
-                  img={pic}
-                  title={initiative.title}
-                  subtitle={initiative.shortDescription}
-                  location={initiative.location}
-                  volunteerData={initiative.followers}
-                />
-              {/* </NavLink> */}
+        {showEvents ? (
+          <div>
+            <div align="center" className="title">
+              <h2>Explore Events</h2>
             </div>
-          ))}
-        </div>
+            <div className="explorefave-wrapper">
+              {data.map((initiative, i) => (
+                <div key={i}>
+                  <EventCard
+                    // img={`../assets/${initiative.images[0]}`}
+                    img={pic}
+                    title={initiative.title}
+                    subtitle={initiative.summary}
+                    location={initiative.location}
+                    volunteerData={initiative.followers}
+                  />
+                  <b>title</b>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div>
+            <div align="center" className="title">
+              <h2>Explore Initiatives</h2>
+            </div>
+            <div className="exploreinit-wrapper">
+              {data.map((initiative, i) => (
+                <div key={i}>
+                  <NavLink to="/initiative">
+                    <InitiativeCard
+                      // img={`../assets/${initiative.images[0]}`}
+                      img={pic}
+                      title={initiative.title}
+                      subtitle={initiative.summary}
+                      location={initiative.location}
+                      volunteerData={initiative.followers}
+                    />
+                  </NavLink>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -8,11 +8,13 @@ import {
   StepLabel,
   TextField,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import { Add, Delete } from "@mui/icons-material";
 import { postInitiative } from "../apis/initiatives-handler";
 import { useOutletContext } from "react-router-dom";
 
 const CreateInitiative = () => {
+  const navigate = useNavigate();
   const [activeStep, setActiveStep] = useState(0);
 
   const [tags, setTags] = useState([]);
@@ -60,6 +62,7 @@ const CreateInitiative = () => {
     postInitiative(formData).then((res) => {
       if (res.status === 200) {
         setSuccessfulSubmit(true);
+        navigate("/initiative/" + res.data._id);
       }
       console.log(res);
     });
