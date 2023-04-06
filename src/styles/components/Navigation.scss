@@ -12,6 +12,8 @@
   }
 
   &--item {
+    color: black;
+    text-decoration: none;
     &:hover {
       color: $brand-02;
     }
@@ -37,10 +39,14 @@
   }
 }
 
-li a {
+li a, .navigation--avatar {
   display: flex;
   color: #3A3E41;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  
+  &:hover {
+    cursor: pointer;
+  }
 }

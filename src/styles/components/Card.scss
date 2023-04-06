@@ -8,14 +8,23 @@
         cursor: pointer;
     }
 
+    .accountType {
+        height: 90px;
+    }
+
     &--text {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
     }
 
+    &--textLink {
+        text-decoration: none;
+        color: $text-standard;
+    }
+
     &--volunteers {
-        color: $background;
+        color: $background-1;
         text-align: right;
     }
 
@@ -29,7 +38,7 @@
     }
 
     &--favorited {
-        color: $background;
+        color: $background-1;
 
         &:hover {
             fill: $brand-02;
@@ -45,7 +54,7 @@
 
     &--location, &--volunteers {
         font-size: 14px;
-        color: $background;
+        color: $background-1;
     }
 
     &--title {
