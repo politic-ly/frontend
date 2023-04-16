@@ -82,7 +82,6 @@ function Initiative() {
             }}
           />
         </NavLink>
-        {console.log("data: ", data)}
         <Breadcrumbs aria-label="breadcrumb">
           <Link underline="hover" color="inherit" href="/">
             Explore Page

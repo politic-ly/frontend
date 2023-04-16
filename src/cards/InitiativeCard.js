@@ -22,8 +22,9 @@ const InitiativeCard = ({
   const [volunteerList, setVolunteerList] = useState([]);
   const [favorited, setFavorited] = useState();
 
+  const user = localStorage.getItem("user");
+  const user_id = JSON.parse(user)._id;
   const isFavorited = () => {
-    const user = localStorage.getItem("user");
     getFavoriteInitiatives(JSON.parse(user)._id).then((res) => {
       if (res.status === 200) {
         setFavorited(res.data.includes(id));
@@ -31,8 +32,6 @@ const InitiativeCard = ({
     });
   };
   isFavorited();
-  const user = localStorage.getItem("user");
-  const user_id = JSON.parse(user)._id;
 
   // Add or remove favorite
   const toggleFavorite = () => {
@@ -51,7 +50,8 @@ const InitiativeCard = ({
     }
   };
   useEffect(() => {
-    volunteerData.map((volunteer) => getUserById(volunteer).then());
+    let tempVolunteers = [];
+    volunteerData.map((volunteer) => getUserById(volunteer).then((res) => console.log(res)));
     setVolunteerList(volunteerData);
   }, [volunteerData]);
 
@@ -67,6 +67,7 @@ const InitiativeCard = ({
         <Link className="initiativeCard--textLink" to={"/initiative/" + id}>
           <div className="initiativeCard--title">
             <h2>
+              {console.log(volunteerData)}
               <span>{title}</span>
             </h2>
             <p className="initiativeCard--subtitle">

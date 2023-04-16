@@ -8,6 +8,7 @@ import {
   ListItemText,
   Menu,
   MenuItem,
+  Popover,
 } from "@mui/material";
 import blurbycat from "../assets/blurby-cat.jpg";
 import {
@@ -25,15 +26,27 @@ import "../App.scss";
 const Navigation = () => {
   const [accountMenuOpen, setAccountMenuOpen] = useState(false);
   const [anchor, setAnchor] = useState(null);
+  const [popoverAnchor, setPopoverAnchor] = useState(null);
+  const [openPopover, setOpenPopover] = useState(false);
 
-  const handleClick = (event) => {
+  const handleAccountMenuOpen = (event) => {
     setAccountMenuOpen(true);
     setAnchor(event.currentTarget);
   };
-  const handleClose = () => {
+  const handleAccountMenuClose = () => {
     setAccountMenuOpen(false);
     setAnchor(null);
   };
+
+  const handlePopoverOpen = (event) => {
+    setOpenPopover(true);
+    setPopoverAnchor(event.currentTarget);
+  };
+  const handlePopoverClose = () => {
+    setOpenPopover(false);
+    setPopoverAnchor(null);
+  };
+
   let navigate = useNavigate();
   const logout = () => {
     googleLogout();
@@ -73,12 +86,21 @@ const Navigation = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink className="navigation--item">
+            <NavLink className="navigation--item" onClick={handlePopoverOpen}>
               <span className="material-symbols-outlined">
                 <Notifications />
               </span>
             </NavLink>
           </li>
+          <Popover
+            open={openPopover}
+            anchorEl={popoverAnchor}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
+            onClose={handlePopoverClose}
+          ></Popover>
           <li>
             <NavLink
               to="/news"
@@ -93,11 +115,11 @@ const Navigation = () => {
           </li>
           <li>
             <div className="navigation--avatar">
-              <Avatar src={blurbycat} alt="cat-account" onClick={handleClick} />
+              <Avatar src={blurbycat} alt="cat-account" onClick={handleAccountMenuOpen} />
               <Menu
                 open={accountMenuOpen}
                 anchorEl={anchor}
-                onClose={handleClose}
+                onClose={handleAccountMenuClose}
               >
                 <NavLink
                   to="/account"

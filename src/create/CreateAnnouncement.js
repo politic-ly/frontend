@@ -28,9 +28,9 @@ const CreateAnnouncement = () => {
   return (
     <div className="createAnnouncement">
       <div className="createAnnouncement--banner">
-        <h2>Create an Event</h2>
+        <h2>Create an Announcement</h2>
         <p className="page-subtitle">
-          <i>Events based on your interests</i>
+          <i>Update your audience</i>
         </p>
       </div>
       <div></div>
@@ -61,7 +61,7 @@ const CreateAnnouncement = () => {
             className="createAnnouncement--submitButton"
             onClick={handleRequiredInfoSubmit}
           >
-            Create Event
+            Create Announcement
           </Button>
         </form>
       </div>

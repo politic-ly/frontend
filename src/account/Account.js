@@ -104,7 +104,6 @@ function Account() {
                 <ListItemButton>
                   <ListItemIcon>
                     <Logout />
-                    {/* {console.log(userInfo.fullName.split(" "))} */}
                   </ListItemIcon>
                   <ListItemText primary="Logout" />
                 </ListItemButton>
