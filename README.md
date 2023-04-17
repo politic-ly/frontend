@@ -30,6 +30,22 @@ Next, open frontend repo. Before running any commands, copy the `.env.local.exam
 
 Once you have both local environments running, you can start making changes. Politic.ly uses React.js framework for the frontend, Google Material UI as a component library, and express.js for our backend. Commit your changes in a branch and make PR when you're ready. Someone from our team will review and approve it once the Netlify tests pass.
 
+## FAQ
+**I don't have a Google account, can I still use the app?**
+Unfortunately not, for security and account management purposes, we utilize Google SSO. In the future, we may offer more authentication options.
+
+**My dev environment isn't working. What should I do?**
+Most often your dev environment won't spin up because you didn't start your backend environment, you have a syntax issue in your code, OR you need to reinstall dependencies by running `npm i`. Trying one of these solutions will hopefully fix your issue. If not, I would reach out to someone on the team for help.
+
+**I found an inappropriate initiative. How do i report it?**
+Our team is adament on keeping inappropriate initiatives off our platform. If you find an initiative that might be suspicious or inappropriate, please report it by contacting someone on our team and we'll have it reviewed and removed within 24 hours. 
+
+**What can I work on to help Politic.ly?**
+You can check what work we've got in the backlog by looking at our issue tickets. Any user is welcome to pick up a ticket and PR!
+
+**Where's the best place to get started?**
+I would start by looking at any issue tagged with "good first issue" and reseraching our tech stack. There's a ton of resources around React and Google mui and express.js! Be it YouTube videos or tutorials or the doc sites, learning how to contribute to our application is doable for anyone. If you need any help, anyone from our team is happy to help.
+
 If you have any questions or need help, reach out to someone on our team:
 <table>
   <tr>
