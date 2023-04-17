@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+![Logo](../../src/assets/user-guide-images/homePage.PNG)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Welcome to Politic.ly!
+This project aims to bring an average American community closer and help create impact within their local environment. While national politics and policies are important, they get plenty of platforms to communicate with citizens. However, local politics rarely get the same level of attention. Through this app, we want to make local politics accessible, especially to young adults who are the most motivated to bring about change. We want to allow local citizens to create initiatives, gather support, and take action to make their communities better.
 
-## Available Scripts
+## Getting Started
+If you'd like to simply traverse our application, you can visit our live site at [](politicly.app). You'll need to use your Google account to login. Once you've logged into, you'll be brought to the Home page. 
 
-In the project directory, you can run:
+![Home Page](../../src/assets/user-guide-images/homePage.PNG)
 
-### `npm start`
+From the Home Page, you can explore initiatives happening in your area or see upcoming events to volunteer with using the tab icons to toggle content. Initiative Cards are a preview that includes the title, short description, location, and volunteer count. You can favorite initiatives you're interested by toggling the heart icon. If you look at the Navigation bar at the top, you can click on any of the icons and they'll take you to new pages. The Heart icon will take you to the favorites page where users can see initiatives they've favorited or saved for later. The Compass icon will take users to the Explore page. Initiatives specific to the user's interests will populate here. The Bell Icon will open the Announcements popover. Any updates or announcements from favorited initiatives will appear here. The Newspaper icon will take users to the News page. Here, users can read articles published by local papers to stay updated on their community. The Account page will open a dropdown prompting users to either go to their Account page or logout. And finally, our logo in the top lefthand corner will return users to the Home page.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![Navigation Bar](../../src/assets/user-guide-images/navigation.PNG)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Users can make their own initiatives and add announcements or events for those initiatives. To make an initiative, users can navigate to their account page. There, you can view your user information including your email, name, and location. You can toggle between viewing your initiatives and an account settings form to change their name and location using the tabs at the bottom of the page. 
 
-### `npm test`
+![Account Page](../../src/assets/user-guide-images/accountPage.PNG)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To add a new initiative, users can find a button on the "My Initiatives" page at the header. A form will prompt users to add information about their initiative including a title, location, short description, long description, tags, and media. Once a user is done stepping through the create initiative workflow, they'll see their initiative populate under "My Initiatives". To create an event or announcement is similar. Instead, however, users will find the buttons within their initiative. When opening an initiative as an admin, they'll see special features only visible to those with admin permissions. Clicking on "Create New" will open a form similar to the create initiative form and will populate under the respective headers when complete.
 
-### `npm run build`
+![Initiative Page](../../src/assets/user-guide-images/initiative.PNG)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Developers Guide
+In order to work on the development of our application, you'll need to 
+Clone both the frontend and backend repo [campaignService](https://github.com/politic-ly/campaignService). Our team prefers to use VS Code, but you can use whatever code editor your find best.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To start, let's get the backend environment running. Open the campaignService repository in VS Code. Duplicate the `.env.example` file and rename it `.env` - these are your credentials for our MongoDB database. You'll need to get the database information from an admin. Run command `npm i` to install dependencies for the project, and `npm start` to spin up your backend local environment. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Next, open frontend repo. Before running any commands, copy the `.env.local.example` file and rename is to `.env.local`. This is your environment file that will verify creditials for Google SSO. You'll need to get the React App Google Client ID from an admin. Run command `npm i` to install dependencies for the project, and `npm start` to spin up your frontend local environment.
 
-### `npm run eject`
+Once you have both local environments running, you can start making changes. Politic.ly uses React.js framework for the frontend, Google Material UI as a component library, and express.js for our backend. Commit your changes in a branch and make PR when you're ready. Someone from our team will review and approve it once the Netlify tests pass.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+If you have any questions or need help, reach out to someone on our team:
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/lizisawizard"><img src="https://avatars.githubusercontent.com/u/48833213?v=4" width="100px;" alt=""/><br /><sub><b>Liz Tremblay</b></sub></a><br /><a href="https://github.com/ceas-ambassadors/ceas-ambassadors-website/commits?author=lizisawizard" title="Code">💻🎨📓📆</a></td>
+    <td align="center"><a href="https://github.com/Jashgada"><img src="https://avatars.githubusercontent.com/u/30024526?v=4" width="100px;" alt=""/><br /><sub><b>Jash Gada</b></sub></a><br /><a href="https://github.com/ceas-ambassadors/ceas-ambassadors-website/commits?author=Jashgada" title="Code">💻🚧💵🔣⚠️</a></td>
+    <td align="center"><a href="https://github.com/alexjmills"><img src="https://avatars.githubusercontent.com/u/43217465?v=4" width="100px;" alt=""/><br /><sub><b>Alex Mills</b></sub></a><br /><a href="https://github.com/ceas-ambassadors/ceas-ambassadors-website/commits?author=alexjmills" title="Code">💻📓🚧🔣</a></td>
+</table>
