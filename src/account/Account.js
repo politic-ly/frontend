@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import {
   Button,
   FormControl,
@@ -69,7 +69,7 @@ function Account() {
       <div className="accountPage--content">
         <div className="accountPage--menu">
           <div className="accountPage--profileInfo">
-              {console.log(userInfo.profileImg)}
+            {console.log(userInfo.profileImg)}
             <img
               src={userInfo.profileImg ? userInfo.profileImg : pic}
               className="accountPage--profilePic"
@@ -115,8 +115,18 @@ function Account() {
         <div className="accountPage--display page-wrapper">
           {currentTab === 0 ? (
             <>
-              <h3>My Initiatives</h3>
-              <div>
+              <div className="accountPage--myInitiativesHeader">
+                <h3>My Initiatives</h3>
+                <Button variant="outlined" color="secondary" >
+                  <Link
+                    className="initiativeCard--textLink account"
+                    to={"/initiative/new"}
+                  >
+                    Create Initiative
+                  </Link>
+                </Button>
+              </div>
+              <div className="accountPage--myInitiatives">
                 {myInitiativeData.map((initiative, i) => {
                   return (
                     <InitiativeCard

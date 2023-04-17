@@ -22,6 +22,9 @@
     &--textLink {
         text-decoration: none;
         color: $text-standard;
+        &.account {
+          color: $brand-01;
+        }
     }
 
     &--volunteers {

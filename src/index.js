@@ -13,7 +13,7 @@ import Favorites from "./favorites/Favorites-Page";
 import CreateInitiative from "./create/CreateInitiative";
 import Initiative from "./initiative/Initiative";
 import Announcements from "./announcements/Announcements";
-import Events from "./events/events";
+import Events from "./events/Events";
 import CreateEvent from "./create/CreateEvent";
 import CreateAnnouncement from "./create/CreateAnnouncement";
 
